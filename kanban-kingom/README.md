@@ -2,13 +2,13 @@
 
 ## Malmö crew
 
-- Eva
-- Caroline
-- Mirza (SM sprint 4)
-- Jason (SM sprint 5)
-- Aleksei (SM sprint 3)
-- Linus (SM sprint 1)
-- Jumi (SM sprint 2)
+- 🔥 Eva
+- 🐢 Caroline
+- 🧀 Mirza (SM sprint 4)
+- 🐏 Jason (SM sprint 5)
+- 🐻 Aleksei (SM sprint 3)
+- 🩰 Linus (SM sprint 1)
+- 🐀 Jumi (SM sprint 2)
 
 ## Trello Board
 

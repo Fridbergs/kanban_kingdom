@@ -1,33 +1,138 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Header from "./components/Header";
+import Board from "./components/Board";
+import "./css/draft-style.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+const boards = [
+  {
+    id: 1,
+    title: "Bajs board 1",
+    dateCreated: "",
+    columns: [
+      {
+        id: 1,
+        title: "todo",
+        stories: [
+          {
+            id: 1,
+            title: "story 1",
+            content: "",
+            deadLine: "",
+            dueDate: "",
+            isUrgent: false,
+            userOwnership: [],
+            tasks: [
+              {
+                id: 1,
+                title: "task 1",
+                content: "",
+                category: "",
+                deadLine: "",
+                dueDate: "",
+                isUrgent: false,
+                isCompleted: false,
+                userOwnership: [],
+              },
+              {
+                id: 4,
+                title: "task 1",
+                content: "",
+                category: "",
+                deadLine: "",
+                dueDate: "",
+                isUrgent: false,
+                isCompleted: false,
+                userOwnership: [],
+              },
+              {
+                id: 5,
+                title: "task 1",
+                content: "",
+                category: "",
+                deadLine: "",
+                dueDate: "",
+                isUrgent: false,
+                isCompleted: false,
+                userOwnership: [],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 2,
+        title: "doing",
+        stories: [
+          {
+            id: 2,
+            title: "story 2",
+            content: "",
+            deadLine: "",
+            dueDate: "",
+            isUrgent: false,
+            userOwnership: [],
+            tasks: [
+              {
+                id: 2,
+                title: "task 2",
+                content: "",
+                category: "",
+                deadLine: "",
+                dueDate: "",
+                isUrgent: false,
+                isCompleted: false,
+                userOwnership: [],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 3,
+        title: "done",
+        stories: [
+          {
+            id: 3,
+            title: "story 3",
+            content: "",
+            deadLine: "",
+            dueDate: "",
+            isUrgent: false,
+            userOwnership: [],
+            tasks: [
+              {
+                id: 3,
+                title: "task 3",
+                content: "",
+                category: "",
+                deadLine: "",
+                dueDate: "",
+                isUrgent: false,
+                isCompleted: false,
+                userOwnership: [],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const handleSubmit = () => {
+
+};
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header />
+      <form action="submit" onSubmit={handleSubmit} >
+        <label htmlFor="boardTitle">Add Title</label>
+        <input type="text" id="boardTitle"/>
+        <button onClick={handleSubmit} >Add Board</button>
+      </form>
+      {boards.length !== 0 && <Board columns={boards[0].columns} board={boards[0]} />}
+      
     </>
   )
 }

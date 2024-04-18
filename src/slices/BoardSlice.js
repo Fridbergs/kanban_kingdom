@@ -1,55 +1,16 @@
-import {createSlice, nanoid} from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { getTimeStamp } from "../assets/GlobalAssets";
 
-function getTimeStamp() {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, "0");
-  const day = String(today.getDate()).padStart(2, "0");
-
-  return `${year}-${month}-${day}`;
-}
 const initialState = {
   boards: [
     {
       id: 1,
       title: "BajsBoard",
-      dateCreated: "",
-      columns: [
-        {
-          id: 1,
-          title: "BajsColumn",
-          stories: [
-            {
-              id: 1,
-              title: "BajsStory",
-              content: "",
-              dateCreated: "",
-              deadLine: "",
-              dueDate: "",
-              isUrgent: false,
-              userOwnership: [],
-              tasks: [
-                {
-                  id: 1,
-                  title: "",
-                  content: "",
-                  dateCreated: "",
-                  category: "",
-                  deadLine: "",
-                  dueDate: "",
-                  isUrgent: false,
-                  isCompleted: false,
-                  userOwnership: [],
-                },
-              ],
-            },
-          ],
-        },
-      ],
+      dateCreated: getTimeStamp,
+      columns: [],
     },
   ],
 };
-
 
 export const boardSlice = createSlice({
   name: "board",
@@ -69,20 +30,7 @@ export const boardSlice = createSlice({
         (board) => board.id !== action.payload
       );
     },
-    addColumn: (state, action) => {
-      const column = {
-        id: nanoid(),
-        title: action.payload,
-        dateCreated: getTimeStamp(),
-        stories: [],
-      };
-      state.columns.push(column);
-    },
-    removeColumn: (state, action) => {
-      state.columns = state.columns.filter(
-        (column) => column.id !== action.payload
-      );
-    },
+
     addStory: (state, action) => {
       const story = {
         id: nanoid(),
@@ -98,7 +46,9 @@ export const boardSlice = createSlice({
       state.stories.push(story);
     },
     removeStory: (state, action) => {
-      state.stories = state.stories.filter((story) => story.id !== action.payload);
+      state.stories = state.stories.filter(
+        (story) => story.id !== action.payload
+      );
     },
     addTask: (state, action) => {
       const task = {
@@ -121,5 +71,12 @@ export const boardSlice = createSlice({
   },
 });
 
-export const {addBoard, removeBoard, addTask, removeTask, addColumn, removeColumn, addStory, removeStory} = boardSlice.actions;
+export const {
+  addBoard,
+  removeBoard,
+  addTask,
+  removeTask,
+  addStory,
+  removeStory,
+} = boardSlice.actions;
 export default boardSlice.reducer;

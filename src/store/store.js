@@ -1,8 +1,15 @@
-import {configureStore} from "@reduxjs/toolkit";
-import boardSlice from "../slices/BoardSlice";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import boardReducer from "../slices/BoardSlice";
+import columnReducer from "../slices/ColumnSlice";
 
+// const rootReducer = combineReducers({
+//   boards: boardReducer,
+// });
 const store = configureStore({
-  reducer: {boardSlice}
+  board: boardReducer,
+  column: columnReducer,
+  task: taskReducer,
+  user: userReducer,
+  story: storyReducer,
 });
-
 export default store;

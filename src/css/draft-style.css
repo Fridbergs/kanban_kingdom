@@ -6,17 +6,41 @@
   margin: 0;
   font-family: 'Roboto', sans-serif;
   border-radius: 0.5rem;
+  max-width: 1000px;
+}
+
+header {
+  border: 2px solid black;
+  height: 50px;
+
+}
+/* Container */
+.container {
+  display: flex;
+  
 }
 
 /* Board */
+
+.board-header {
+background-color: rgba(137, 43, 226, 0.716);
+}
+
 .board {
-  border: 2px solid black;
+    border: 2px solid black;
   width: 1000px;
   height: 800px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   gap: 1rem;
 }
+
+.column-container {
+display: flex;
+flex-grow: 1;
+}
+
 /* Column */
 .column {
   background-color: aquamarine;
@@ -24,9 +48,15 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  height: fit-content;
   gap: 1rem;
   width: 280px;
   padding: 1rem;
+}
+
+.column-title {
+  text-align: left;
+  width: 100%;
 }
 /* Story */
 .story {
@@ -50,4 +80,10 @@ gap: 0.5rem;
   width: 40%;
   padding: 0.5rem;
   
+}
+
+/* Aside */
+.board-menu {
+  width: 200px;
+  border: 2px solid black
 }

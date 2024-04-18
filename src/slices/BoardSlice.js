@@ -8,21 +8,20 @@ function getTimeStamp() {
 
   return `${year}-${month}-${day}`;
 }
-
 const initialState = {
   boards: [
     {
       id: 1,
-      title: "Testboard",
+      title: "BajsBoard",
       dateCreated: "",
       columns: [
         {
           id: 1,
-          title: "TestColumn",
+          title: "BajsColumn",
           stories: [
             {
               id: 1,
-              title: "TestStory",
+              title: "BajsStory",
               content: "",
               dateCreated: "",
               deadLine: "",
@@ -50,6 +49,7 @@ const initialState = {
     },
   ],
 };
+
 
 export const boardSlice = createSlice({
   name: "board",

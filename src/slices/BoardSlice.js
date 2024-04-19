@@ -1,16 +1,7 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
-import { getTimeStamp } from "../assets/GlobalAssets";
+import {createSlice, nanoid} from "@reduxjs/toolkit";
+import {getTimeStamp} from "../assets/GlobalAssets";
 
-const initialState = {
-  boards: [
-    {
-      id: 1,
-      title: "BajsBoard",
-      dateCreated: getTimeStamp,
-      columns: [],
-    },
-  ],
-};
+const initialState = []
 
 export const boardSlice = createSlice({
   name: "board",
@@ -23,18 +14,45 @@ export const boardSlice = createSlice({
         dateCreated: getTimeStamp(),
         columns: [],
       };
-      state.boards.push(board);
+      state.push(board);
     },
     removeBoard: (state, action) => {
-      state.boards = state.boards.filter(
+      state = state.filter(
         (board) => board.id !== action.payload
       );
     },
+    addColumn: (state, action) => {
+      const { title, boardId } = action.payload;
+      const boardIndex = state.findIndex(board => board.id === boardId);
+      console.log(boardId)
+      if (boardIndex !== -1) {
+
+        const column = {
+              id: nanoid(),
+              title: title,
+              dateCreated: getTimeStamp(),
+              stories: [],
+          };
+          state[boardIndex].columns.push(column)
+        }
+    },
+    removeColumn: (state, action) => {
+      state.columns = state.columns.filter(
+        (column) => column.id !== action.payload
+      );
+    },
+
 
     addStory: (state, action) => {
+      const { title, columnId, boardId} = action.payload;
+      const boardIndex = state.findIndex(board => board.id === boardId);
+      const columnIndex = state[boardIndex].columns.findIndex(column => column.id === columnId);
+      console.log(boardIndex, columnIndex)
+      if (columnIndex !== -1 && boardIndex !== -1) {
+
       const story = {
         id: nanoid(),
-        title: action.payload,
+        title: title,
         content: "",
         dateCreated: getTimeStamp(),
         deadLine: "",
@@ -43,17 +61,24 @@ export const boardSlice = createSlice({
         userOwnership: [],
         tasks: [],
       };
-      state.stories.push(story);
-    },
+      state[boardIndex].columns[columnIndex].stories.push(story)
+    }
+  },
     removeStory: (state, action) => {
-      state.stories = state.stories.filter(
+      state.columns.stories = state.columns.stories.filter(
         (story) => story.id !== action.payload
       );
     },
     addTask: (state, action) => {
+      const { title, columnId, boardId, storyId} = action.payload;
+      const boardIndex = state.findIndex(board => board.id === boardId);
+      const columnIndex = state[boardIndex].columns.findIndex(column => column.id === columnId);
+      const storyIndex = state[boardIndex].columns[columnIndex].stories.findIndex(story => story.id === storyId);
+      if (columnIndex !== -1 && boardIndex !== -1 && storyIndex !== -1) {
+
       const task = {
         id: 1,
-        title: action.payload,
+        title: title,
         content: "",
         dateCreated: "",
         category: "",
@@ -63,10 +88,12 @@ export const boardSlice = createSlice({
         isCompleted: false,
         userOwnership: [],
       };
-      state.tasks.push(task);
-    },
+      state[boardIndex].columns[columnIndex].stories[storyIndex].tasks.push(task)
+ 
+    }}
+  ,
     removeTask: (state, action) => {
-      state.tasks = state.tasks.filter((task) => task.id !== action.payload);
+      state.columns.stories.tasks = state.columns.stories.tasks.filter((task) => task.id !== action.payload);
     },
   },
 });
@@ -74,6 +101,8 @@ export const boardSlice = createSlice({
 export const {
   addBoard,
   removeBoard,
+  addColumn,
+  removeColumn ,
   addTask,
   removeTask,
   addStory,

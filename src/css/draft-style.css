@@ -12,6 +12,9 @@
 header {
   border: 2px solid black;
   height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
 }
 /* Container */

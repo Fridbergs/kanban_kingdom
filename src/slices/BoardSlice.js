@@ -24,7 +24,6 @@ export const boardSlice = createSlice({
     addColumn: (state, action) => {
       const { title, boardId } = action.payload;
       const boardIndex = state.findIndex(board => board.id === boardId);
-      console.log(boardId)
       if (boardIndex !== -1) {
 
         const column = {
@@ -47,7 +46,6 @@ export const boardSlice = createSlice({
       const { title, columnId, boardId} = action.payload;
       const boardIndex = state.findIndex(board => board.id === boardId);
       const columnIndex = state[boardIndex].columns.findIndex(column => column.id === columnId);
-      console.log(boardIndex, columnIndex)
       if (columnIndex !== -1 && boardIndex !== -1) {
 
       const story = {
@@ -77,7 +75,7 @@ export const boardSlice = createSlice({
       if (columnIndex !== -1 && boardIndex !== -1 && storyIndex !== -1) {
 
       const task = {
-        id: 1,
+        id: nanoid(),
         title: title,
         content: "",
         dateCreated: "",

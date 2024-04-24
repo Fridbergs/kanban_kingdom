@@ -1,15 +1,16 @@
-import {useState} from "react";
+import { useState } from "react";
 import Header from "./components/Header";
 import Board from "./components/Board";
 import "./css/draft-style.css";
-import {useSelector, useDispatch} from "react-redux";
-import {addBoard} from "./slices/BoardSlice";
-import {nanoid} from "@reduxjs/toolkit";
+import { useSelector, useDispatch } from "react-redux";
+import { addBoard } from "./slices/BoardSlice";
+import { nanoid } from "@reduxjs/toolkit";
 
 function App() {
+  const [activeBoardId, setActiveBoardId] = useState(""); // Store the ID of the active board
+
   //Addera board.
   const boards = useSelector((state) => state.boards);
-  console.log(boards);
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
 
@@ -18,9 +19,10 @@ function App() {
 
     dispatch(addBoard(input));
     setInput("");
-    console.log(boards);
   };
-
+  const handleActiveBoard = (id) => {
+    setActiveBoardId(id); // Set the ID of the active board
+  };
   return (
     <>
       <Header />
@@ -38,10 +40,24 @@ function App() {
             />
             <button type="submit">Add Board</button>
           </form>
+          <p>Select Board</p>
+          {boards.map((board) => (
+            <button
+              onClick={() => handleActiveBoard(board.id)}
+              style={{ width: "100%", marginTop: "1rem" }}
+              key={board.id}
+            >
+              {" "}
+              {board.title}
+            </button>
+          ))}
         </aside>
-        {boards.map((board) => (
-          <Board key={board.id} board={board} />
-        ))}
+        {/* Render the active board */}
+        {activeBoardId && (
+          <div className="active-board">
+            <Board board={boards.find((board) => board.id === activeBoardId)} />
+          </div>
+        )}
       </div>
     </>
   );

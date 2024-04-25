@@ -21,9 +21,21 @@ const Column = ({ stories, column, board }) => {
   return (
     <section className={css.column}>
       {/* En form som lägger till stories */}
-      <h2 className={css.column_title}>{column.title}</h2>
+      <div className={css.column_header}>
+        <h3 className={css.column_title}>{column.title}</h3>
+      </div>
+      <div className={css.column_content}>
+        {stories.map((story) => (
+          <Story
+            key={story.id}
+            tasks={story.tasks}
+            story={story}
+            column={column}
+            board={board}
+          />
+        ))}
+      </div>
       <form onSubmit={handleAddStory}>
-        <label htmlFor="storyTitle">Add Story</label>
         <input
           type="text"
           id="storyTitle"
@@ -31,17 +43,10 @@ const Column = ({ stories, column, board }) => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <button type="submit">Add story</button>
+        <button type="submit" disabled={input.length < 5}>
+          +
+        </button>
       </form>
-      {stories.map((story) => (
-        <Story
-          key={story.id}
-          tasks={story.tasks}
-          story={story}
-          column={column}
-          board={board}
-        />
-      ))}
     </section>
   );
 };

@@ -1,16 +1,82 @@
 .column {
-  background-color: aquamarine;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  background-color: #202020c2;
+  backdrop-filter: blur(4px);
+  border-radius: 5px;
   max-height: 100%;
-  margin-left: 8px;
+  height: fit-content;
+  margin-left: 11px;
   gap: 1rem;
   width: 280px;
-  padding: 1rem;
+  /* padding: 0.5rem; */
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: relative;
+  scrollbar-color: #fff6 #00000026;
+}
+
+.column_header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  width: 100%;
+  min-height: 45px;
+  top: 0;
+  background-color: rgba(25, 25, 25, 0.9);
+  backdrop-filter: blur(4px);
 }
 
 .column_title {
+  width: 100%;
   text-align: left;
+}
+
+.buffer {
+  height: 5px;
+}
+
+.column_content {}
+
+h3 {
+  /* margin-left: 10px;
+  margin-top: 8px; */
+  margin: 12px 0 12px 10px;
+  font-size: 0.8rem;
+}
+
+.column>form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  padding: 0 8px;
+  background-color: #202020c2;
+  bottom: 0;
+  margin-top: auto;
+  backdrop-filter: blur(4px);
+  width: 100%;
+  min-height: 45px;
+}
+
+.column>form>input {
+  margin: 0 5px 0 0;
+  width: 100%;
+}
+
+.column>form>button {
+  padding: 1px 5px;
+  color: white;
+  background-color: transparent;
+  transition: all 0.3s;
+  border: 0;
+  outline: 1px solid transparent;
+  border-radius: 2px;
+}
+
+.column>form>button:disabled {
+  color: red;
 }

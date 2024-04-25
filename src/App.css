@@ -28,7 +28,7 @@
   overflow-x: scroll;
   height: calc(100vh - 50px);
   background-color: transparent;
-  padding-top: 52px;
+  padding-top: 54px;
 }
 
 /* Container som håller menyn till vänster */
@@ -46,6 +46,7 @@
 .board_menu form {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .board_menu p {

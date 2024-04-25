@@ -1,0 +1,17 @@
+.column {
+  background-color: aquamarine;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  max-height: 100%;
+  margin-left: 8px;
+  gap: 1rem;
+  width: 280px;
+  padding: 1rem;
+}
+
+.column_title {
+  text-align: left;
+  width: 100%;
+}

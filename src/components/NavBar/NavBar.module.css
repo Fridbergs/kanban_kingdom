@@ -1,0 +1,16 @@
+.nav_list {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+}
+
+.nav_list li {
+  transition: color 0.3s;
+}
+
+.nav_list li:hover {
+  color: #505050;
+  cursor: pointer;
+}

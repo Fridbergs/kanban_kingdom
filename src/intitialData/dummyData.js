@@ -15,7 +15,6 @@ export const boards = [
               deadLine: "",
               dueDate: "",
               isUrgent: false,
-              userOwnership: [],
               tasks: [
                 {
                   id: 1,

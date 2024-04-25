@@ -6,8 +6,8 @@ const UserSelector = () => {
   return (
     <>
       <select>
-      <option value="">Select user</option>
-      <option value="All">Show all users</option> {/*  ?? Bör detta va ett alternativ? */}
+        <option value="">Select user</option>
+        <option value="All">Show all users</option>
         <option value="Mirza">Mirza</option>
         <option value="Eva">Eva</option>
         <option value="Caroline">Caroline</option>

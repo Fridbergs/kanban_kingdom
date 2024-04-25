@@ -113,6 +113,10 @@
   cursor: pointer;
 }
 
+.board_menu form>button:disabled {
+  color: red;
+}
+
 /* Board-knappar anslutna till varje board-element i menyn till vänster.
 Syns bara när man hoverar över list items i menyn. */
 

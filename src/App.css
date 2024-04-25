@@ -8,10 +8,6 @@
   color: rgb(224, 224, 224);
 }
 
-.root {
-  max-width: 100vw;
-}
-
 /* Container som håller allt innehåll under headern*/
 
 .container {
@@ -19,6 +15,7 @@
   width: 100%;
   /* Hela höjden minus headerns höjd*/
   max-height: calc(100vh - 50px);
+  min-height: calc(100vh - 50px);
   background-image: url('./assets/kingdom.jpg');
   background-size: cover;
 }

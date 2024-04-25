@@ -1,0 +1,116 @@
+/*MODAL MODAL MODAL*/
+
+.modal {
+    position: fixed; /* Change from relative to fixed */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 9999; /* Ensure the modal appears above other content */
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Relative to viewport width */
+    height: 100vh; /* Relative to viewport height */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Ensure the overlay appears above other content */
+  }
+  .modal-header{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .modal-label {
+    background-color: var(--blue-color);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    color: var(--white-color);
+    text-transform: uppercase;
+    font-family: monospace;
+  }
+  
+  select {
+    background-color: var(--blue-color);
+    border-radius: 0.25rem;
+    border: none;
+    color:var(--white-color);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-family: monospace;
+  }
+
+  .notUrgent{
+    color: var(--blue-color);
+  }
+
+  .urgent{
+    color: red;
+  }
+
+  .notUrgent:hover,
+  .urgent:hover{
+    cursor: pointer;
+  }
+
+  .modal .urgent, .notUrgent{
+    font-size: 1.5rem;
+  }
+  
+  .modal-title{
+    border: none;
+    font-size: 1.5rem;
+    width: 100%;
+  }
+  
+  .modal-date{
+    text-align: left;
+    margin: 1rem 0rem;
+    font-style: italic;
+    font-size: 0.8rem;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  .modal-content{
+    border: none;
+    font-size: 1rem;
+    width: 100%;
+    min-height: 200px;
+    font-style: roboto;
+  }
+  
+  .modal-text{
+    border: 1px dotted var(--main-color);
+    font-size: 1rem;
+    width: 100%;
+    min-height: 200px;
+  }
+  
+  
+  .close-modal {
+    /* position: absolute; */
+    cursor: pointer;
+    color: var(--blue-color);
+    display: flex;
+    justify-content: flex-end;
+    font-size: 48px;
+  }
+  .close-modal:hover{
+    color: red
+  }
+  
+  .modal-footer{
+    display: flex;
+  }
+  

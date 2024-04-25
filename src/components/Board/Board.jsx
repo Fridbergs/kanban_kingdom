@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import Column from "../Column/Column"; // assuming the file is named Column.js
 import { addColumn } from "../../slices/BoardSlice";
 import css from "./Board.module.css";
-const Board = ({ board }) => {
+const Board = ({ board, handleOpenModal }) => {
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
 
@@ -33,6 +33,7 @@ const Board = ({ board }) => {
       <div className={css.column_container}>
         {board.columns.map((column) => (
           <Column
+            handleOpenModal={handleOpenModal}
             key={column.id}
             stories={column.stories}
             board={board}

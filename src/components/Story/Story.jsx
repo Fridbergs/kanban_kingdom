@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { addTask } from "../../slices/BoardSlice";
 import css from "./Story.module.css";
 
-const Story = ({ tasks, story, column, board }) => {
+const Story = ({ tasks, story, column, board, handleOpenModal }) => {
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
 
@@ -35,7 +35,7 @@ const Story = ({ tasks, story, column, board }) => {
       </form>
       <div className={css.task_div}>
         {tasks.map((task) => (
-          <Task key={task.id} task={task} />
+          <Task handleOpenModal={handleOpenModal} key={task.id} task={task} />
         ))}
       </div>
     </article>

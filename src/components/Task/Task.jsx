@@ -4,7 +4,7 @@ import css from "./Task.module.css";
 const Task = ({ task }) => {
   return (
     <div className={css.task}>
-      <h3>{task.title}</h3>
+      <h5>{task.title}</h5>
     </div>
   );
 };

@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: rgb(224, 224, 224);
+}
+
+.root {
+  max-height: 100vh;
+  overflow-y: hidden;
+}
+
+/* Container */
+.container {
+  display: flex;
+  max-height: calc(100vh - 35px);
+  /* Hela höjden minus headerns höjd*/
+}
+
+/* Aside */
+.board_menu {
+  max-width: 170px;
+  min-width: 170px;
+  background-color: #202020;
+  border-top: 1px solid #414141;
+  border-right: 1px solid #202020;
+  border-radius: 0;
+  max-height: 100vh;
+}
+
+.active_board {
+  padding: 0 0px;
+  overflow-x: scroll;
+  height: calc(100vh - 35px);
+}
+
+aside>p {
+  margin: 10px 0 5px 5px;
+  font-size: 0.7rem;
+}
+
+aside>ul {
+  width: 100%;
+}
+
+aside>ul li {
+  padding: 5px 0 5px 12px;
+  border: 0;
+  font-size: 0.6rem;
+  color: #afafaf;
+  border-radius: 0;
+  width: 100%;
+  position: relative;
+  transition: all 0.3s;
+}
+
+aside>ul li:hover {
+  background-color: #444444;
+  cursor: pointer;
+}
+
+aside>form>input {
+  margin-top: 5px;
+  margin-right: 5px;
+  margin: 5px 5px 5px 3px;
+  font-size: 0.6rem;
+  padding: 2px 3px;
+  border: 0;
+  border-radius: 2px;
+  background-color: transparent;
+  transition: all 0.3s;
+  outline: 0;
+  border: 0;
+  width: 80%;
+}
+
+aside>form>input:focus {
+  background-color: #444444;
+  color: #afafaf;
+}
+
+aside>form>button {
+  padding: 1px 5px;
+  color: white;
+  background-color: transparent;
+  transition: all 0.3s;
+  border: 0;
+  outline: 1px solid transparent;
+  border-radius: 2px;
+}
+
+aside>form>button:hover {
+  outline: 1px solid #afafaf;
+  cursor: pointer;
+}
+
+.board_list_buttons {
+  right: 7px;
+  top: 4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  position: absolute;
+}
+
+aside>ul li:hover .board_list_buttons {
+  opacity: 1;
+}

@@ -1,28 +1,25 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import Column from "./Column"; // assuming the file is named Column.js
-import { addColumn } from "../slices/BoardSlice";
+import Column from "../Column/Column"; // assuming the file is named Column.js
+import { addColumn } from "../../slices/BoardSlice";
+import css from "./Board.module.css";
 const Board = ({ board }) => {
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
 
   const handleAddColumn = (e) => {
     e.preventDefault();
-    console.log(board.id);
     const boardId = board.id;
-
     dispatch(addColumn({ title: input, boardId }));
     setInput("");
   };
 
   return (
-    <main className="board">
-      <div className="board-header">
-        <h1>{board.title}</h1>
-
-        {/* en till form som lägger till kolumner */}
+    <main className={css.board}>
+      <div className={css.board_header}>
+        <h2>{board.title}</h2>
+        {/* Form som lägger till kolumner */}
         <form onSubmit={handleAddColumn}>
-          <label htmlFor="columnTitle">Add Title</label>
           <input
             type="text"
             id="columnTitle"
@@ -30,10 +27,10 @@ const Board = ({ board }) => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
-          <button type="submit">Add column</button>
+          <button type="submit"> + </button>
         </form>
       </div>
-      <div className="column-container">
+      <div className={css.column_container}>
         {board.columns.map((column) => (
           <Column
             key={column.id}

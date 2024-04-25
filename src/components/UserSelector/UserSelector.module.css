@@ -1,0 +1,14 @@
+.selector {
+  margin-right: 0.5rem;
+  font-size: 0.6rem;
+}
+
+select option {
+  color: white;
+  background-color: #202020;
+}
+
+select {
+  background-color: #202020;
+  color: whitesmoke;
+}

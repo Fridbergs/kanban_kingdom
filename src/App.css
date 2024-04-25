@@ -118,6 +118,7 @@
 
 .board_menu form>button:disabled {
   color: red;
+  opacity: 0.2;
 }
 
 /* Board-knappar anslutna till varje board-element i menyn till vänster.

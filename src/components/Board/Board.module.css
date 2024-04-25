@@ -71,6 +71,11 @@ form>button:hover {
   cursor: pointer;
 }
 
+form>button:disabled {
+  color: red;
+  opacity: 0.2;
+}
+
 input:focus+button {
   outline: 1px solid #afafaf;
 }

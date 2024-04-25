@@ -85,4 +85,5 @@ h3 {
 
 .column>form>button:disabled {
   color: red;
+  opacity: 0.2;
 }

@@ -8,12 +8,12 @@ const Story = ({ tasks, story, column, board, handleOpenModal }) => {
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
 
+  const columnId = column.id;
+  const boardId = board.id;
+  const storyId = story.id;
+
   const handleAddTask = (e) => {
     e.preventDefault();
-
-    const columnId = column.id;
-    const boardId = board.id;
-    const storyId = story.id;
     dispatch(addTask({ title: input, columnId, boardId, storyId }));
     setInput("");
   };
@@ -35,7 +35,14 @@ const Story = ({ tasks, story, column, board, handleOpenModal }) => {
       </form>
       <div className={css.task_div}>
         {tasks.map((task) => (
-          <Task handleOpenModal={handleOpenModal} key={task.id} task={task} />
+          <Task
+            boardId={boardId}
+            columnId={columnId}
+            storyId={storyId}
+            handleOpenModal={handleOpenModal}
+            key={task.id}
+            task={task}
+          />
         ))}
       </div>
     </article>

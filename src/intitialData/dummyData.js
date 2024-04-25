@@ -98,7 +98,7 @@ export const boards = [
                   id: 3,
                   title: "task 3",
                   content: "",
-                  category: "",
+                  categories: [],
                   deadLine: "",
                   dueDate: "",
                   isUrgent: false,

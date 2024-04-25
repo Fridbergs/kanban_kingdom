@@ -7,6 +7,7 @@ const UserSelector = () => {
   return (
     <>
       <select className={css.selector}>
+        <option value="Everyone">Everyone</option>
         <option value="Mirza">Mirza</option>
         <option value="Eva">Eva</option>
         <option value="Caroline">Caroline</option>

@@ -6,6 +6,8 @@
   margin: 0;
   font-family: 'Roboto', sans-serif;
   color: rgb(224, 224, 224);
+  scrollbar-width: thin;
+  scrollbar-color: #fff6 #00000026;
 }
 
 /* Container som håller allt innehåll under headern*/

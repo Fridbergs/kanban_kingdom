@@ -18,7 +18,7 @@
   display: flex;
   width: 100%;
   /* Hela höjden minus headerns höjd*/
-  max-height: calc(100vh - 35px);
+  max-height: calc(100vh - 50px);
   background-image: url('./assets/kingdom.jpg');
   background-size: cover;
 }
@@ -29,8 +29,9 @@
   padding: 0;
   width: 100%;
   overflow-x: scroll;
-  height: calc(100vh - 35px);
+  height: calc(100vh - 50px);
   background-color: transparent;
+  padding-top: 52px;
 }
 
 /* Container som håller menyn till vänster */

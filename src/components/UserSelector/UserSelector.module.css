@@ -1,6 +1,8 @@
 .selector {
   margin-right: 0.5rem;
-  font-size: 0.6rem;
+  font-size: 0.8rem;
+  border-radius: 3px;
+  padding: 2px 3px;
 }
 
 select option {

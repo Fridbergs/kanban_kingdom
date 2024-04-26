@@ -1,24 +1,35 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import Column from "../Column/Column"; // assuming the file is named Column.js
+import { useDispatch, useSelector } from "react-redux";
+import Column from "../Column/Column";
 import { addColumn } from "../../slices/BoardSlice";
 import css from "./Board.module.css";
-const Board = ({ board, handleOpenModal }) => {
+import { useParams } from "react-router-dom";
+
+const Board = ({ handleOpenModal }) => {
+  const { boardId } = useParams();
+  const boards = useSelector((state) => state.boards);
+
+  // Find the board using the parsed boardId as a string
+  const board = boards.find((board) => board.id === boardId);
+
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
 
   const handleAddColumn = (e) => {
     e.preventDefault();
-    const boardId = board.id;
     dispatch(addColumn({ title: input, boardId }));
     setInput("");
   };
+
+  if (!board) {
+    // Handle case when board is not found
+    return <div>Loading...</div>;
+  }
 
   return (
     <main className={css.board}>
       <div className={css.board_header}>
         <h2>{board.title}</h2>
-        {/* Form som lägger till kolumner */}
         <form onSubmit={handleAddColumn}>
           <input
             type="text"

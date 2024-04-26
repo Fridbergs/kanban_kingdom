@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { addStory } from "../../slices/BoardSlice";
 import css from "./Column.module.css";
 
-const Column = ({ stories, column, board }) => {
+const Column = ({ stories, column, board, handleOpenModal }) => {
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
 
@@ -32,6 +32,7 @@ const Column = ({ stories, column, board }) => {
             story={story}
             column={column}
             board={board}
+            handleOpenModal={handleOpenModal}
           />
         ))}
       </div>
@@ -47,6 +48,7 @@ const Column = ({ stories, column, board }) => {
           +
         </button>
       </form>
+
     </section>
   );
 };

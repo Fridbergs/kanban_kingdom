@@ -1,7 +1,7 @@
 import css from "./Modal.module.css";
 import { useDispatch } from "react-redux";
 import { editTask, removeTask } from "../../slices/BoardSlice";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   FaSave,
   FaTrashAlt,
@@ -32,19 +32,22 @@ const Modal = ({ task, onClose, ids }) => {
   const [isUrgent, setIsUrgent] = useState(task.isUrgent);
   const [isCompleted, setIsCompleted] = useState(task.isCompleted);
   const [userOwnership, setUserOwnership] = useState(task.userOwnership);
+  const [users, setUsers] = useState([]);
 
   //vi hämatar users från userSlice - useSelctor
   // spara user.name i en array som blir select (eva fix)
   // Dummy user data
-  const users = [
-    { label: "Eva", value: "Eva" },
-    { label: "Caroline", value: "Caroline" },
-    { label: "Linus", value: "Linus" },
-    { label: "Mirza", value: "Mirza" },
-    { label: "Jason", value: "Jason" },
-    { label: "Jumi", value: "Jumi" },
-    { label: "Alexei", value: "Alexei" },
-  ];
+  useEffect(() => {
+    // Retrieve users from localStorage
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+    // Extract user names
+    const userNames = storedUsers.map((user) => ({
+      label: user.name,
+      value: user.name,
+    }));
+    // Update the users state
+    setUsers(userNames);
+  }, []);
 
   const labels = [
     { label: "Bug", value: "Bug" },

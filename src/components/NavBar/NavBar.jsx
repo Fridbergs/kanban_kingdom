@@ -1,14 +1,50 @@
-import React from "react";
+import { NavLink } from "react-router-dom";
 import css from "./NavBar.module.css";
 
 const NavBar = () => {
-  //göra till Links med sidor (efter routing är på plats)
   return (
     <nav>
       <ul className={css.nav_list}>
-        <li>info</li>
-        <li>settings</li>
-        <li>user profile</li>
+        <li>
+          <NavLink
+            to="/"
+            style={({ isActive }) => ({
+              textDecoration: isActive ? "underline" : "none",
+            })}
+          >
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/info"
+            style={({ isActive }) => ({
+              textDecoration: isActive ? "underline" : "none",
+            })}
+          >
+            Info
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/settings"
+            style={({ isActive }) => ({
+              textDecoration: isActive ? "underline" : "none",
+            })}
+          >
+            Settings
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/users"
+            style={({ isActive }) => ({
+              textDecoration: isActive ? "underline" : "none",
+            })}
+          >
+            Users
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

@@ -27,7 +27,10 @@ const Board = ({ board, handleOpenModal }) => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
-          <button type="submit"> + </button>
+          <button type="submit" disabled={input.length < 5}>
+            {" "}
+            +{" "}
+          </button>
         </form>
       </div>
       <div className={css.column_container}>

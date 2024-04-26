@@ -21,9 +21,19 @@ const Story = ({ tasks, story, column, board, handleOpenModal }) => {
   return (
     <article className={css.story}>
       {/* en form som lägger till tasks */}
-      <h2>{story.title}</h2>
+      <h4>{story.title}</h4>
+      <div className={css.task_div}>
+        {tasks.map((task) => (
+          <Task             
+            boardId={boardId}
+            columnId={columnId}
+            storyId={storyId}
+            handleOpenModal={handleOpenModal}
+            key={task.id}
+            task={task} />
+        ))}
+      </div>
       <form onSubmit={handleAddTask}>
-        <label htmlFor="taskTitle">Add task</label>
         <input
           type="text"
           id="taskTitle"
@@ -31,20 +41,10 @@ const Story = ({ tasks, story, column, board, handleOpenModal }) => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <button type="submit">Add task</button>
+        <button type="submit" disabled={input.length < 5}>
+          +
+        </button>
       </form>
-      <div className={css.task_div}>
-        {tasks.map((task) => (
-          <Task
-            boardId={boardId}
-            columnId={columnId}
-            storyId={storyId}
-            handleOpenModal={handleOpenModal}
-            key={task.id}
-            task={task}
-          />
-        ))}
-      </div>
     </article>
   );
 };

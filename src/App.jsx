@@ -85,7 +85,10 @@ function App() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
             />
-            <button type="submit"> + </button>
+            <button type="submit" disabled={input.length < 5}>
+              {" "}
+              +{" "}
+            </button>
           </form>
         </aside>
         {/* Render the active board */}

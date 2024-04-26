@@ -1,20 +1,31 @@
+/* Container som håller samman board_header och column_container  */
+
 .board {
-  width: 1000px;
+  width: 100%;
   height: 99%;
   display: flex;
+  position: relative;
   flex-direction: column;
   border-radius: 0;
   justify-content: center;
   gap: 8px;
+  /* background-color: #dbdbdb; */
 }
+
+/* Container som håller Board-title och Add-Column input+knapp */
 
 .board_header {
   display: flex;
-  padding: 7px 5px;
-  background-color: #404040;
+  position: fixed;
+  top: 50px;
+  width: 100%;
+  padding: 7px 9px;
+  background-color: #40404070;
   align-items: center;
   border-radius: 0;
 }
+
+/* Container som håller alla kolumner */
 
 .column_container {
   display: flex;
@@ -22,11 +33,13 @@
   max-height: 100%;
 }
 
+/* Input-fält för att skriva namn på ny kolumn */
+
 input {
   margin-left: 20px;
-  margin-right: 12px;
+  margin-right: 6px;
   background-color: transparent;
-  padding: 2px 3px;
+  padding: 5px 3px;
   border: 0;
   border-radius: 2px;
   background-color: transparent;
@@ -35,9 +48,11 @@ input {
 }
 
 input:focus {
-  background-color: #555;
-  color: #cfcfcf;
+  background-color: #a3a3a357;
+  color: #e9e9e9;
 }
+
+/* + Knapp (för att adda kolumn) */
 
 form>button {
   padding: 1px 5px;
@@ -54,6 +69,11 @@ form>button:hover {
   outline: 1px solid #afafaf;
   background-color: #afafaf;
   cursor: pointer;
+}
+
+form>button:disabled {
+  color: red;
+  opacity: 0.2;
 }
 
 input:focus+button {

@@ -1,14 +1,50 @@
 .story {
-  background-color: grey;
-  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
+  justify-content: stretch;
+  background-color: transparent;
+  border: 1px solid #afafaf57;
+  transition: border 0.3s;
+  border-radius: 5px;
+  max-width: 96%;
+  margin: 5px 5px;
+  width: 100%;
+  padding: 0.5rem 4px;
+  margin: 0;
+  margin-top: 4px;
+}
+
+.story:hover {
+  border: 1px solid #afafaf96;
+}
+
+.story:last-child {
+  margin-bottom: 5px;
 }
 
 .task_div {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+}
+
+h4 {
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.story>form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+}
+
+.story>form>input {
+  margin: 8px 5px 0 0;
+  width: 100%;
+}
+
+.story>form>button {
+  margin-top: 8px;
 }

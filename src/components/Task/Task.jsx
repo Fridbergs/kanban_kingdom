@@ -12,7 +12,7 @@ const Task = ({ task, handleOpenModal, boardId, columnId, storyId }) => {
     <>
       <div onClick={handleClick} className={css.task}>
         <div className="taskheader">
-          <h3>{task.title}</h3>
+          <h5>{task.title}</h5>
           <p style={{ fontSize: "0.6rem", color: "black" }}>
             {task.userOwnership.join(", ")}
           </p>

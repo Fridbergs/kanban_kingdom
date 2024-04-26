@@ -112,3 +112,14 @@ export const boards = [
       ],
     },
   ];
+
+  const users = [
+    {
+      id: nanoid,
+      name: "",
+      photo: "url-link",
+      joined: "date",
+      description: "",
+      isKickedOut: false
+    }
+  ]

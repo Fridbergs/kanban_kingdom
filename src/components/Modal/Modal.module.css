@@ -4,6 +4,7 @@
     position: fixed; /* Change from relative to fixed */
     top: 50%;
     left: 50%;
+    /* width: 50%; */
     transform: translate(-50%, -50%);
     background-color: rgb(92, 92, 92);
     padding: 1rem;

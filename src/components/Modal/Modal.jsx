@@ -33,6 +33,8 @@ const Modal = ({ task, onClose, ids }) => {
   const [isCompleted, setIsCompleted] = useState(task.isCompleted);
   const [userOwnership, setUserOwnership] = useState(task.userOwnership);
 
+  //vi hämatar users från userSlice - useSelctor
+  // spara user.name i en array som blir select (eva fix)
   // Dummy user data
   const users = [
     { label: "Eva", value: "Eva" },

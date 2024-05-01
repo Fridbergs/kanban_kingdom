@@ -7,6 +7,7 @@ import SettingsPage from "../SettingsPage/SettingsPage";
 import { useSelector, useDispatch } from "react-redux";
 import InfoPage from "../InfoPage/InfoPage";
 import { addBoard, setBoards } from "../../slices/BoardSlice";
+import "../../App.css";
 
 const Layout = ({ handleOpenModal }) => {
   const [activeBoardId, setActiveBoardId] = useState(""); // Store the ID of the active board
@@ -52,8 +53,11 @@ const Layout = ({ handleOpenModal }) => {
               to={`/boards/${board.id}`}
               className="route_link"
               key={board.id}>
-              <li>
-                {board.title}
+              <li
+                className={
+                  activeBoardId === board.id ? "route_link_active" : undefined
+                }>
+                <span className="active_span">{board.title}</span>
                 <span className="board_list_buttons">×</span>
               </li>
             </Link>

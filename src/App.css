@@ -10,6 +10,11 @@
   scrollbar-color: #fff6 #00000026;
 }
 
+#root {
+  max-height: 100vh;
+  min-height: 100vh;
+}
+
 /* Container som håller allt innehåll under headern*/
 
 .container {
@@ -73,6 +78,19 @@
 
 .route_link {
   text-decoration: none;
+}
+
+.route_link_active {
+  text-decoration: none;
+}
+
+.active_span {
+  transition: all 0.4s;
+}
+
+.route_link_active>span {
+  margin-left: 5px;
+  color: orangered;
 }
 
 .board_menu ul li:hover {

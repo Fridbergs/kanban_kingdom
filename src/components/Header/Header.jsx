@@ -11,7 +11,6 @@ const Header = () => {
         {" "}
         <h1 className={css.h1}>KANBAN KINGDOM</h1>
       </Link>
-
       <NavBar />
       <UserSelector />
     </header>

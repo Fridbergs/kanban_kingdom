@@ -47,15 +47,15 @@ const Layout = ({ handleOpenModal }) => {
         <p>» Boards</p>
         <ul>
           {boards?.map((board) => (
-            <li key={board.id}>
-              <Link
-                onClick={() => handleActiveBoard(board.id)}
-                to={`/boards/${board.id}`}
-              >
+            <Link
+              onClick={() => handleActiveBoard(board.id)}
+              to={`/boards/${board.id}`}
+              className="route_link">
+              <li key={board.id}>
                 {board.title}
-              </Link>
-              <span className="board_list_buttons">×</span>
-            </li>
+                <span className="board_list_buttons">×</span>
+              </li>
+            </Link>
           ))}
         </ul>
         <form onSubmit={handleAddBoard}>

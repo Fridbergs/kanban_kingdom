@@ -71,6 +71,10 @@
   transition: all 0.3s;
 }
 
+.route_link {
+  text-decoration: none;
+}
+
 .board_menu ul li:hover {
   background-color: #444444;
   cursor: pointer;

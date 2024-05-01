@@ -6,10 +6,10 @@ import css from "./Header.module.css";
 
 const Header = () => {
   return (
-    <header>
-      <Link to={"/"}>
+    <header className={css.header}>
+      <Link to={"/"} className="route_link">
         {" "}
-        <h1>KANBAN KINGDOM</h1>
+        <h1 className={css.h1}>KANBAN KINGDOM</h1>
       </Link>
 
       <NavBar />

@@ -2,6 +2,10 @@
   width: 70%;
 }
 
+.ul>p {
+  margin-left: 2px;
+}
+
 .li {
   display: flex;
   justify-content: space-between;
@@ -17,4 +21,16 @@
 .img {
   height: 3rem;
   border-radius: 50%;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }

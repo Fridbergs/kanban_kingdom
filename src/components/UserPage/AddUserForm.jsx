@@ -21,25 +21,25 @@ const AddUserForm = () => {
 
   return (
     <form className={css.form} onSubmit={handleAddUser}>
-      <label htmlFor="name" className={css.label}>
+      {/* <label htmlFor="name" className={css.label}>
         Name:
-      </label>
+      </label> */}
       <input
         type="text"
         id="name"
+        className={css.input}
         placeholder="Name"
         value={formData.name}
         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
       />
       <br />
-      <label
-        htmlFor="photo"
-        style={{ color: "white", marginRight: "10px", marginTop: "10px" }}>
+      {/* <label htmlFor="photo" className={css.label}>
         Photo URL:
-      </label>
+      </label> */}
       <input
         type="text"
         id="photo"
+        className={css.input}
         placeholder="Photo URL"
         value={formData.photo}
         onChange={(e) => setFormData({ ...formData, photo: e.target.value })}

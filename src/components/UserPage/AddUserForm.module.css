@@ -1,14 +1,24 @@
 .form {
   background-color: #202020ec;
-  padding: 20px;
+  padding: 10px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 .label {
   color: white;
-  margin-right: 10px;
+  margin: 0;
+  text-align: left;
+}
+
+.input {
+  margin: 0 0 -10px 0;
+  transition: outline 0.5s;
+  outline: none;
+}
+
+.input:hover {
+  outline: 1px solid #5f5f5fbc;
 }

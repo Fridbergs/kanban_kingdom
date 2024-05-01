@@ -1,10 +1,10 @@
 .form {
-  background-color: #202020ec;
-  padding: 10px;
-  border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: #202020ec;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .label {

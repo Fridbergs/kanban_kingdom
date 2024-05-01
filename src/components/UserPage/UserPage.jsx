@@ -14,7 +14,7 @@ const UserPage = ({ toggleCollapse, asideIsCollapsed }) => {
       </button>
       <main className={css.main}>
         <UserList users={users} />
-        <div className="form-div">
+        <div className={css.form_div}>
           <p className={css.p}>Add User</p>
           <AddUserForm />
         </div>

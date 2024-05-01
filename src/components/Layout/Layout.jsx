@@ -85,7 +85,15 @@ const Layout = ({ handleOpenModal }) => {
         </form>
       </aside>
       <Routes>
-        <Route path="/" element={<Welcome />} />
+        <Route
+          path="/"
+          element={
+            <Welcome
+              toggleCollapse={handleAsideCollapse}
+              asideIsCollapsed={asideIsCollapsed}
+            />
+          }
+        />
         <Route
           path="/boards/:boardId"
           element={

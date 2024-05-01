@@ -1,10 +1,12 @@
+.form_div {
+  width: 25%;
+}
+
 .main {
-  /* backgroundColor: "rgba(0, 0, 0, 0.5)", */
-  padding: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: start;
-  gap: 1rem;
+  padding: 20px;
   width: 100%;
   max-width: 1000px;
 }

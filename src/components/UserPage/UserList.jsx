@@ -20,7 +20,7 @@ const UserList = ({ users }) => {
             <p>{user.name}</p>
             <p>{user.dateJoined}</p>
             <button
-              className={css.button}
+              className="user_page_button"
               onClick={() => handleRemoveUser(user.id)} // Call handleRemoveUser with userId
             >
               Remove

@@ -1,0 +1,14 @@
+.form {
+  background-color: #202020ec;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.label {
+  color: white;
+  margin-right: 10px;
+}

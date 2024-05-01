@@ -10,8 +10,7 @@ const NavBar = () => {
             to="/"
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
-            })}
-          >
+            })}>
             Home
           </NavLink>
         </li>
@@ -20,8 +19,7 @@ const NavBar = () => {
             to="/info"
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
-            })}
-          >
+            })}>
             Info
           </NavLink>
         </li>
@@ -30,8 +28,7 @@ const NavBar = () => {
             to="/settings"
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
-            })}
-          >
+            })}>
             Settings
           </NavLink>
         </li>
@@ -40,8 +37,7 @@ const NavBar = () => {
             to="/users"
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
-            })}
-          >
+            })}>
             Users
           </NavLink>
         </li>

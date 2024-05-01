@@ -2,6 +2,9 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 import { getTimeStamp } from "../assets/GlobalAssets";
 
+/* BUG: When removing users, it will not reflect in the UI 
+until the user refreshes the page. */
+
 // Function to retrieve users from localStorage
 const loadUsersFromLocalStorage = () => {
   const storedUsers = JSON.parse(localStorage.getItem("users")) || [];

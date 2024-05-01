@@ -11,7 +11,7 @@ const UserPage = () => {
     <main className={css.main}>
       <UserList users={users} />
       <div className="form-div">
-        <p classname={css.p}>Add User</p>
+        <p className={css.p}>Add User</p>
         <AddUserForm />
       </div>
     </main>

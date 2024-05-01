@@ -50,8 +50,9 @@ const Layout = ({ handleOpenModal }) => {
             <Link
               onClick={() => handleActiveBoard(board.id)}
               to={`/boards/${board.id}`}
-              className="route_link">
-              <li key={board.id}>
+              className="route_link"
+              key={board.id}>
+              <li>
                 {board.title}
                 <span className="board_list_buttons">×</span>
               </li>

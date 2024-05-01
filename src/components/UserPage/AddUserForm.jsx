@@ -1,5 +1,6 @@
 // AddUserForm.js
 import React, { useState } from "react";
+import css from "./AddUserForm.module.css";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../slices/UserSlice";
 
@@ -19,19 +20,8 @@ const AddUserForm = () => {
   };
 
   return (
-    <form
-      style={{
-        backgroundColor: "#202020ec",
-        padding: "20px",
-        borderRadius: "8px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-      onSubmit={handleAddUser}
-    >
-      <label htmlFor="name" style={{ color: "white", marginRight: "10px" }}>
+    <form className={css.form} onSubmit={handleAddUser}>
+      <label htmlFor="name" className={css.label}>
         Name:
       </label>
       <input
@@ -44,8 +34,7 @@ const AddUserForm = () => {
       <br />
       <label
         htmlFor="photo"
-        style={{ color: "white", marginRight: "10px", marginTop: "10px" }}
-      >
+        style={{ color: "white", marginRight: "10px", marginTop: "10px" }}>
         Photo URL:
       </label>
       <input
@@ -56,16 +45,7 @@ const AddUserForm = () => {
         onChange={(e) => setFormData({ ...formData, photo: e.target.value })}
       />
       <br />
-      <button
-        type="submit"
-        style={{
-          backgroundColor: "white",
-          border: "none",
-          borderRadius: "8px",
-          color: "black",
-          padding: "0.5rem",
-        }}
-      >
+      <button type="submit" className="user_page_button">
         Add User
       </button>
     </form>

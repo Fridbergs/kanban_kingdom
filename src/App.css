@@ -139,3 +139,13 @@ Syns bara när man hoverar över list items i menyn. */
   transition: opacity 0.2s;
   position: absolute;
 }
+
+/* Buttons inside user page */
+
+.user_page_button {
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  padding: 8px;
+}

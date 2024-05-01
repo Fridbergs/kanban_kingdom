@@ -5,7 +5,7 @@ import { addColumn } from "../../slices/BoardSlice";
 import css from "./Board.module.css";
 import { useParams } from "react-router-dom";
 
-const Board = ({ handleOpenModal }) => {
+const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
   const { boardId } = useParams();
   const boards = useSelector((state) => state.boards);
 
@@ -45,6 +45,9 @@ const Board = ({ handleOpenModal }) => {
         </form>
       </div>
       <div className={css.column_container}>
+        <button className="collapse_button" onClick={toggleCollapse}>
+          {asideIsCollapsed ? ">" : "<"}
+        </button>
         {board.columns.map((column) => (
           <Column
             handleOpenModal={handleOpenModal}

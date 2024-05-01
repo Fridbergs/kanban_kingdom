@@ -1,7 +1,14 @@
 import React from "react";
 
-const SettingsPage = () => {
-  return <main>SettingsPage</main>;
+const SettingsPage = ({ toggleCollapse, asideIsCollapsed }) => {
+  return (
+    <>
+      <button className="collapse_button" onClick={toggleCollapse}>
+        {asideIsCollapsed ? ">" : "<"}
+      </button>
+      <main>SettingsPage</main>
+    </>
+  );
 };
 
 export default SettingsPage;

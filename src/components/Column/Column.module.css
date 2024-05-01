@@ -4,11 +4,11 @@
   background-color: #202020dc;
   backdrop-filter: blur(4px);
   border-radius: 5px;
-  /* TESTING MAX HEIGHT */
   max-height: calc(100vh - 118px);
   height: fit-content;
   transition: height 0.5s;
   margin-left: 11px;
+  /* margin-left: 11px; */
   margin-top: 50px;
   min-width: 250px;
   max-width: 250px;

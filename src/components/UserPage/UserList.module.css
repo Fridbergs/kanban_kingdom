@@ -1,0 +1,28 @@
+.ul {
+  width: 70%;
+}
+
+.li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  background-color: #202020ec;
+  margin-top: 8px;
+}
+
+.img {
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.button {
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  padding: 8px;
+}

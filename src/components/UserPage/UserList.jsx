@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { removeUser } from "../../slices/UserSlice";
+import css from "./UserList.module.css";
 
 const UserList = ({ users }) => {
   const dispatch = useDispatch();
@@ -11,38 +12,15 @@ const UserList = ({ users }) => {
 
   return (
     <>
-      <ul style={{ width: "70%" }}>
+      <ul className={css.ul}>
         <p>User List</p>
         {users.map((user) => (
-          <li
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: "1rem",
-              padding: "0.5rem",
-              fontSize: "1rem",
-              borderRadius: "0.5rem",
-              backgroundColor: "#202020ec",
-              marginTop: "0.5rem",
-            }}
-            key={user.id}
-          >
-            <img
-              style={{ height: "3rem", borderRadius: "50%" }}
-              src={user.profilePhoto}
-              alt={user.name}
-            />{" "}
+          <li className={css.li} key={user.id}>
+            <img className={css.img} src={user.profilePhoto} alt={user.name} />{" "}
             <p>{user.name}</p>
             <p>{user.dateJoined}</p>
             <button
-              style={{
-                backgroundColor: "white",
-                border: "none",
-                borderRadius: "8px",
-                color: "black",
-                padding: "0.5rem",
-              }}
+              className={css.button}
               onClick={() => handleRemoveUser(user.id)} // Call handleRemoveUser with userId
             >
               Remove

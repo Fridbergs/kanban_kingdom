@@ -29,6 +29,9 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
   return (
     <main className={css.board}>
       <div className={css.board_header}>
+        <button className="collapse_button no_margin" onClick={toggleCollapse}>
+          {asideIsCollapsed ? ">" : "<"}
+        </button>
         <h2>{board.title}</h2>
         <form onSubmit={handleAddColumn}>
           <input
@@ -45,9 +48,6 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
         </form>
       </div>
       <div className={css.column_container}>
-        <button className="collapse_button" onClick={toggleCollapse}>
-          {asideIsCollapsed ? ">" : "<"}
-        </button>
         {board.columns.map((column) => (
           <Column
             handleOpenModal={handleOpenModal}

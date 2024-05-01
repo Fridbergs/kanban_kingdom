@@ -21,10 +21,14 @@
   position: fixed;
   top: 50px;
   width: 100%;
-  padding: 7px 9px;
+  padding: 7px 9px 7px 0;
   background-color: #40404070;
   align-items: center;
   border-radius: 0;
+}
+
+.board_header>h2 {
+  margin-left: 15px;
 }
 
 /* Container som håller alla kolumner */

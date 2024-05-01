@@ -63,7 +63,7 @@ const Layout = ({ handleOpenModal }) => {
                   activeBoardId === board.id ? "route_link_active" : undefined
                 }>
                 <span className="active_span">{board.title}</span>
-                <span className="board_list_buttons">×</span>
+                {/* <span className="board_list_buttons">×</span> */}
               </li>
             </Link>
           ))}
@@ -76,6 +76,7 @@ const Layout = ({ handleOpenModal }) => {
             id="boardTitle"
             placeholder="Add a board..."
             value={input}
+            maxLength="17"
             onChange={(e) => setInput(e.target.value)}
           />
           <button type="submit" disabled={input.length < 5}>

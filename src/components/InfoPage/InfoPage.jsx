@@ -1,4 +1,5 @@
 import React from "react";
+import css from "./InfoPage.module.css";
 
 const InfoPage = ({ toggleCollapse, asideIsCollapsed }) => {
   return (
@@ -6,7 +7,7 @@ const InfoPage = ({ toggleCollapse, asideIsCollapsed }) => {
       <button className="collapse_button" onClick={toggleCollapse}>
         {asideIsCollapsed ? ">" : "<"}
       </button>
-      <main>Info Page</main>
+      <main className={css.info_container}>Info Page</main>
     </>
   );
 };

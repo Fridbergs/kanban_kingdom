@@ -1,4 +1,5 @@
 import React from "react";
+import css from "./SettingsPage.module.css";
 
 const SettingsPage = ({ toggleCollapse, asideIsCollapsed }) => {
   return (
@@ -6,7 +7,7 @@ const SettingsPage = ({ toggleCollapse, asideIsCollapsed }) => {
       <button className="collapse_button" onClick={toggleCollapse}>
         {asideIsCollapsed ? ">" : "<"}
       </button>
-      <main>SettingsPage</main>
+      <main className={css.settings_container}>SettingsPage</main>
     </>
   );
 };

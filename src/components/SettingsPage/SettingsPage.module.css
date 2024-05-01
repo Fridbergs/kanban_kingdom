@@ -1,0 +1,9 @@
+.settings_container {
+  margin: 20px;
+  padding: 8px;
+  border-radius: 5px;
+  width: 100%;
+  height: fit-content;
+  background-color: #202020ec;
+  backdrop-filter: blur(3px);
+}

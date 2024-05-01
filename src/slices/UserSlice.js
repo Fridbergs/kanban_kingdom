@@ -13,6 +13,7 @@ const initialState = loadUsersFromLocalStorage();
 export const userSlice = createSlice({
   name: "users",
   initialState,
+  selectedUser: "Välj användare",
   reducers: {
     addUser: (state, action) => {
       const { name, photo } = action.payload;
@@ -39,8 +40,12 @@ export const userSlice = createSlice({
         localStorage.setItem("users", JSON.stringify(state));
       }
     },
+    setSelectedUser: (state, action) => {
+      state.selectedUser = action.payload;
+    },
   },
 });
 
-export const { addUser, removeUser, updateUser } = userSlice.actions;
+export const { setSelectedUser, addUser, removeUser, updateUser } =
+  userSlice.actions;
 export default userSlice.reducer;

@@ -1,23 +1,37 @@
 import React from "react";
-import css from "./UserSelector.module.css";
+import Select from "react-select";
+import { useDispatch } from "react-redux";
+import { setSelectedUser } from "../../slices/UserSlice"; // Justera sökvägen baserat på filstrukturen
 
-const UserSelector = () => {
-  //renderar ut options beroende på vårt state för users
-  //uppdateras automatiskt när en användare lags till/tagits bort
+function UserSelector() {
+  const dispatch = useDispatch();
+  const users = [
+    { value: "Everyone", label: "Everyone" },
+    { value: "Mirza", label: "Mirza" },
+    { value: "Eva", label: "Eva" },
+    { value: "Caroline", label: "Caroline" },
+    { value: "Aleksei", label: "Aleksei" },
+    { value: "Jumi", label: "Jumi" },
+    { value: "Linus", label: "Linus" },
+    { value: "Jason", label: "Jason" },
+  ]; // Användarnamn som objekt för React Select
+
+  const handleChange = (selectedOption) => {
+    // Säkerställ att ett värde finns, annars skicka en tom sträng eller ett standardvärde
+    dispatch(
+      setSelectedUser(selectedOption ? selectedOption.value : "Välj användare")
+    );
+  };
+
   return (
-    <>
-      <select className={css.selector}>
-        <option value="Everyone">Everyone</option>
-        <option value="Mirza">Mirza</option>
-        <option value="Eva">Eva</option>
-        <option value="Caroline">Caroline</option>
-        <option value="Aleksei">Aleksei</option>
-        <option value="Jumi">Jumi</option>
-        <option value="Linus">Linus</option>
-        <option value="Jason">Jason</option>
-      </select>
-    </>
+    <Select
+      options={users}
+      onChange={handleChange}
+      className="basic-select"
+      classNamePrefix="select"
+      placeholder="Välj användare" // Lägger till en placeholder i dropdown
+    />
   );
-};
+}
 
 export default UserSelector;

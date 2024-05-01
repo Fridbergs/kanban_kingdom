@@ -1,0 +1,14 @@
+.main {
+  /* backgroundColor: "rgba(0, 0, 0, 0.5)", */
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.p {
+  margin-bottom: 0.5rem;
+}

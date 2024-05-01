@@ -1,4 +1,5 @@
 import React from "react";
+import css from "./UserPage.module.css";
 import { useSelector } from "react-redux";
 import UserList from "./UserList";
 import AddUserForm from "./AddUserForm";
@@ -7,21 +8,10 @@ const UserPage = () => {
   const users = useSelector((state) => state.users);
 
   return (
-    <main
-      style={{
-        // backgroundColor: "rgba(0, 0, 0, 0.5)",
-        padding: "20px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "start",
-        gap: "1rem",
-        width: "100%",
-        maxWidth: "1000px",
-      }}
-    >
+    <main className={css.main}>
       <UserList users={users} />
       <div className="form-div">
-        <p style={{ marginBottom: "0.5rem" }}>Add User</p>
+        <p classname={css.p}>Add User</p>
         <AddUserForm />
       </div>
     </main>

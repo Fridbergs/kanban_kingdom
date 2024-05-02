@@ -149,7 +149,7 @@ const Modal = ({ task, onClose, ids }) => {
     <div className={css["modal-overlay"]} onClick={onClose}>
       <div className={css.modal} onClick={(e) => e.stopPropagation()}>
         <div className={css["modal-header"]}>
-          <button style={{ marginRight: "1rem" }} onClick={onClose}>
+          <button onClick={onClose}>
             <FaTimes />
           </button>
           <label htmlFor="title">Title</label>

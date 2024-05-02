@@ -15,6 +15,10 @@
   scrollbar-color: #fff6 #00000026;
 }
 
+.column:last-child {
+  margin-right: 11px;
+}
+
 .column_header {
   display: flex;
   justify-content: center;

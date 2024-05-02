@@ -50,7 +50,11 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
 
   return (
     <main className={css.board}>
-      <div className={css.board_header}>
+      {/* <div className={css.board_header}> */}
+      <div
+        className={`${css.board_header} ${
+          asideIsCollapsed ? "full_width" : ""
+        }`}>
         <div className={css.left_side}>
           <button
             className="collapse_button no_margin"

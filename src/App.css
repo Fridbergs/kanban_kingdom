@@ -212,3 +212,7 @@ Syns bara när man hoverar över list items i menyn. */
   background-color: #afafaf;
   cursor: pointer;
 }
+
+.full_width {
+  width: 100vw;
+}

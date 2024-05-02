@@ -5,6 +5,7 @@ import "./index.css";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
 import { BrowserRouter as Router } from "react-router-dom";
+import "./components/Board/Listview.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

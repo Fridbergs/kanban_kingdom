@@ -4,6 +4,7 @@ import Column from "../Column/Column";
 import { addColumn } from "../../slices/BoardSlice";
 import css from "./Board.module.css";
 import { useParams } from "react-router-dom";
+import ListviewPage from "./ListviewPage";
 
 const Board = ({ handleOpenModal }) => {
   const { boardId } = useParams();
@@ -13,7 +14,14 @@ const Board = ({ handleOpenModal }) => {
   const board = boards.find((board) => board.id === boardId);
 
   const [input, setInput] = useState("");
+  const [isListview, setIsListview] = useState(false);
   const dispatch = useDispatch();
+
+  const handleListviewClick = (e) => {
+    e.preventDefault();
+    setIsListview(!isListview);
+    console.log(isListview);
+  };
 
   const handleAddColumn = (e) => {
     e.preventDefault();
@@ -43,8 +51,25 @@ const Board = ({ handleOpenModal }) => {
             +{" "}
           </button>
         </form>
+        <button onClick={handleListviewClick}>Listview</button>
       </div>
-      <div className={css.column_container}>
+      {!isListview ? (
+        <div className={css.column_container}>
+          {board.columns.map((column) => (
+            <Column
+              handleOpenModal={handleOpenModal}
+              key={column.id}
+              stories={column.stories}
+              board={board}
+              columns={board.columns}
+              column={column}
+            />
+          ))}
+        </div>
+      ) : (
+        <ListviewPage board={board} handleOpenModal={handleOpenModal}  />
+      )}
+      {/* <div className={css.column_container}>
         {board.columns.map((column) => (
           <Column
             handleOpenModal={handleOpenModal}
@@ -54,7 +79,7 @@ const Board = ({ handleOpenModal }) => {
             column={column}
           />
         ))}
-      </div>
+      </div> */}
     </main>
   );
 };

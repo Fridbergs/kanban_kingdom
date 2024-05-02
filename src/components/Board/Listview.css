@@ -1,0 +1,17 @@
+.listview-div section {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  backdrop-filter: blur(4px);
+  border-radius: 5px;
+  max-height: 100%;
+  height: fit-content;
+  transition: height 0.5s;
+  margin-left: 11px;
+  margin-top: 50px;
+  /* gap: 1rem; */
+  min-width: 250px;
+  max-width: 250px;
+  position: relative;
+  scrollbar-color: #fff6 #00000026;
+}

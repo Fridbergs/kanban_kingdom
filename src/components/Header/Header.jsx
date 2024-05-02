@@ -3,13 +3,18 @@ import NavBar from "../NavBar/NavBar";
 import UserSelector from "../UserSelector/UserSelector";
 import { Link } from "react-router-dom";
 import css from "./Header.module.css";
+import logo from "../../assets/images/blau.png";
 
 const Header = () => {
   return (
     <header className={css.header}>
       <Link to={"/"} className="route_link">
         {" "}
-        <h1 className={css.h1}>KANBAN KINGDOM</h1>
+        <img
+          style={{ height: "2.5rem", marginLeft: "1rem" }}
+          src={logo}
+          alt="kanban kingdom logo"
+        />
       </Link>
 
       <NavBar />

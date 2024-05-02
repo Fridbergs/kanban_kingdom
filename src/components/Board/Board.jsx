@@ -5,6 +5,7 @@ import { addColumn } from "../../slices/BoardSlice";
 import css from "./Board.module.css";
 import { useParams } from "react-router-dom";
 import ListviewPage from "./ListviewPage";
+import { FaTrello, FaStream } from "react-icons/fa";
 
 const Board = ({ handleOpenModal }) => {
   const { boardId } = useParams();
@@ -51,7 +52,17 @@ const Board = ({ handleOpenModal }) => {
             +{" "}
           </button>
         </form>
-        <button onClick={handleListviewClick}>Listview</button>
+        <button
+          className="listBtn"
+          onClick={handleListviewClick}
+          style={{ color: "blue", marginLeft: "2rem" }}
+        >
+          {!isListview ? (
+            <FaTrello style={{ color: "blue" }} />
+          ) : (
+            <FaStream style={{ color: "blue" }} />
+          )}
+        </button>
       </div>
       {!isListview ? (
         <div className={css.column_container}>
@@ -67,7 +78,7 @@ const Board = ({ handleOpenModal }) => {
           ))}
         </div>
       ) : (
-        <ListviewPage board={board} handleOpenModal={handleOpenModal}  />
+        <ListviewPage board={board} handleOpenModal={handleOpenModal} />
       )}
       {/* <div className={css.column_container}>
         {board.columns.map((column) => (

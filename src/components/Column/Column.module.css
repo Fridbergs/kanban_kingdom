@@ -4,12 +4,11 @@
   background-color: #202020dc;
   backdrop-filter: blur(4px);
   border-radius: 5px;
-  max-height: calc(100vh - 118px);
+  max-height: calc(100vh - 126px);
   height: fit-content;
   transition: height 0.5s;
   margin-left: 11px;
-  /* margin-left: 11px; */
-  margin-top: 50px;
+  margin-top: 58px;
   min-width: 250px;
   max-width: 250px;
   position: relative;
@@ -35,10 +34,6 @@
   text-align: left;
 }
 
-.buffer {
-  height: 5px;
-}
-
 .column_content {
   display: flex;
   flex-direction: column;
@@ -47,7 +42,6 @@
   height: 100%;
   scrollbar-width: thin;
   scrollbar-color: #fff6 #00000026;
-
 }
 
 h3 {

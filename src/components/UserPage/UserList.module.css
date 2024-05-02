@@ -1,5 +1,12 @@
-.ul {
+.user_list_container {
+  display: flex;
+  flex-direction: column;
   width: 72%;
+  height: calc(100vh - 62px);
+}
+
+.ul {
+  overflow-y: scroll;
 }
 
 .ul>p {

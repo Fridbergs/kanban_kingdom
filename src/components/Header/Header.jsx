@@ -3,18 +3,23 @@ import NavBar from "../NavBar/NavBar";
 import UserSelector from "../UserSelector/UserSelector";
 import { Link } from "react-router-dom";
 import css from "./Header.module.css";
+import logo from "../../assets/images/logo.png";
 
 const Header = () => {
   return (
     <header className={css.header}>
+      <NavBar />
       <Link to={"/"} className="route_link">
         {" "}
-        <h1 className={css.h1}>KANBAN KINGDOM</h1>
+        <img
+          className={css.logo}
+          src={logo}
+          alt="Kanban Kingdom - Malmö Marvels"
+        />
+        {/* <h1 className={css.h1}>KANBAN KINGDOM</h1> */}
       </Link>
-      <NavBar />
       <UserSelector />
     </header>
-    // Subkomponenter skall byggas, nav, login dropdown
   );
 };
 

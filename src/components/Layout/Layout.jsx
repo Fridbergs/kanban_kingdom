@@ -59,9 +59,13 @@ const Layout = ({ handleOpenModal }) => {
               className="route_link"
               key={board.id}>
               <li
-                className={
+                className={`${
                   activeBoardId === board.id ? "route_link_active" : undefined
-                }>
+                } ${asideIsCollapsed ? "hide" : ""}`}
+                // className={
+                //   activeBoardId === board.id ? "route_link_active" : undefined
+                // }
+              >
                 <span className="active_span">{board.title}</span>
                 {/* <span className="board_list_buttons">×</span> */}
               </li>

@@ -48,29 +48,30 @@
   border-top: 1px solid #414141;
   border-radius: 0;
   max-height: 100vh;
-  transition: all 0.5s;
+  transition: all .5s;
 }
 
 .board_menu form {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s;
+  transition: all .5s;
 }
 
 .board_menu p {
   margin: 10px 0 5px 5px;
   font-size: 0.9rem;
-  transition: all 0.3s;
+  transition: all .5s;
 }
 
 .hide {
   opacity: 0;
+  transform: translateX(-200px);
 }
 
 .board_menu ul {
   width: 100%;
-  transition: all 0.3s;
+  transition: all .5s;
 }
 
 .board_menu ul li {
@@ -81,7 +82,7 @@
   border-radius: 0;
   width: 100%;
   position: relative;
-  transition: all 0.3s;
+  transition: all .5s;
 }
 
 .is_collapsed {
@@ -98,7 +99,6 @@
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   z-index: 2;
-  /* transform: translateY(55px); */
   background-color: #202020ec;
   backdrop-filter: blur(3px);
   margin-top: 7px;
@@ -124,7 +124,7 @@
 }
 
 .active_span {
-  transition: all 0.4s;
+  transition: all .5s;
 }
 
 .route_link_active>span {
@@ -165,7 +165,7 @@
   padding: 1px 5px;
   color: white;
   background-color: transparent;
-  transition: all 0.3s;
+  transition: all 0.5s;
   border: 0;
   outline: 1px solid transparent;
   border-radius: 2px;

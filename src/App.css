@@ -112,7 +112,7 @@
 }
 
 .collapse_button:hover {
-  color: orangered;
+  color: #6bb3f9;
 }
 
 .route_link {
@@ -129,7 +129,7 @@
 
 .route_link_active>span {
   margin-left: 5px;
-  color: lightskyblue;
+  color: #6bb3f9;
 }
 
 .board_menu ul li:hover {

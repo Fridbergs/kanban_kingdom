@@ -2,6 +2,7 @@ import Task from "../Task/Task";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTask } from "../../slices/BoardSlice";
+import { useDrag } from "react-dnd";
 import css from "./Story.module.css";
 
 const Story = ({ tasks, story, column, board, handleOpenModal }) => {
@@ -12,6 +13,15 @@ const Story = ({ tasks, story, column, board, handleOpenModal }) => {
   const boardId = board.id;
   const storyId = story.id;
 
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: "story",
+    item: { id: story.id },
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  }));
+
+
   const handleAddTask = (e) => {
     e.preventDefault();
     dispatch(addTask({ title: input, columnId, boardId, storyId }));
@@ -19,7 +29,7 @@ const Story = ({ tasks, story, column, board, handleOpenModal }) => {
   };
 
   return (
-    <article className={css.story}>
+    <article className={css.story} ref={drag} >
       {/* en form som lägger till tasks */}
       <h4>{story.title}</h4>
       <div className={css.task_div}>

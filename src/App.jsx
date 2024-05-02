@@ -9,6 +9,8 @@ import { addBoard, setBoards } from "./slices/BoardSlice"; // Import clearBoards
 import { nanoid } from "@reduxjs/toolkit";
 import Layout from "./components/Layout/Layout";
 import css from "./components/Board/Board.module.css";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 function App() {
   // localStorage.clear();
@@ -33,11 +35,13 @@ function App() {
 
   return (
     <>
-      <Header />
-      {isModalOpen && (
-        <Modal task={modalTask} onClose={handleCloseModal} ids={modalIds} />
-      )}
-      <Layout handleOpenModal={handleOpenModal} />
+      <DndProvider backend={HTML5Backend}>
+        <Header />
+        {isModalOpen && (
+          <Modal task={modalTask} onClose={handleCloseModal} ids={modalIds} />
+        )}
+        <Layout handleOpenModal={handleOpenModal} />
+      </DndProvider>
     </>
   );
 }

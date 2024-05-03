@@ -4,8 +4,9 @@ import Column from "../Column/Column";
 import { addColumn, editBoardName } from "../../slices/BoardSlice";
 import css from "./Board.module.css";
 import { useParams } from "react-router-dom";
-import ListviewPage from "./ListViewPage";
+import ListViewPage from "./ListViewPage";
 import { FaTrello, FaStream } from "react-icons/fa";
+import "./Listview.css"
 
 const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
   const { boardId } = useParams();
@@ -15,8 +16,8 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
   // Find the board using the parsed boardId as a string
   const board = boards.find((board) => board.id === boardId);
   const [input, setInput] = useState("");
-  const [isEditingBoardName, setIsEditingBoardName] = useState(false);
   const [isListview, setIsListview] = useState(false);
+  const [isEditingBoardName, setIsEditingBoardName] = useState(false);
   const dispatch = useDispatch();
 
   const handleListviewClick = (e) => {
@@ -96,7 +97,6 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
             +{" "}
           </button>
         </form>
-
         <button
           className="listBtn"
           onClick={handleListviewClick}
@@ -125,9 +125,8 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
           ))}
         </div>
       ) : (
-        <ListviewPage board={board} handleOpenModal={handleOpenModal} />
+        <ListViewPage board={board} handleOpenModal={handleOpenModal} />
       )}
-
       {/* <div className={css.column_container}>
         {board.columns.map((column) => (
           <Column

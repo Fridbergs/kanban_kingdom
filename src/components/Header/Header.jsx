@@ -4,6 +4,7 @@ import NavBar from "../NavBar/NavBar";
 import UserSelector from "../UserSelector/UserSelector";
 import { Link } from "react-router-dom";
 import css from "./Header.module.css";
+
 import logo from "../../assets/images/logo.png";
 
 const Header = () => {
@@ -18,6 +19,7 @@ const Header = () => {
       <Link to={"/"} className="route_link">
         {" "}
         <img
+
           className={css.logo}
           src={logo}
           alt="Kanban Kingdom - Malmö Marvels"

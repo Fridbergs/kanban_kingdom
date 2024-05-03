@@ -7,9 +7,11 @@ import SettingsPage from "../SettingsPage/SettingsPage";
 import { useSelector, useDispatch } from "react-redux";
 import InfoPage from "../InfoPage/InfoPage";
 import { addBoard, setBoards } from "../../slices/BoardSlice";
+import "../../App.css";
 
 const Layout = ({ handleOpenModal }) => {
   const [activeBoardId, setActiveBoardId] = useState(""); // Store the ID of the active board
+  const [asideIsCollapsed, setAsideIsCollapsed] = useState(false);
   const [input, setInput] = useState(""); // Input value for new board title
 
   const dispatch = useDispatch();
@@ -37,33 +39,44 @@ const Layout = ({ handleOpenModal }) => {
     setInput(""); // Reset input field
   };
 
+  function handleAsideCollapse() {
+    setAsideIsCollapsed((prev) => !prev);
+  }
   // Get boards from Redux state
   const boards = useSelector((state) => state.boards);
   // const board = boards.find((board) => board.id === activeBoardId);
 
   return (
     <div className="container">
-      <aside className="board_menu">
-        <p>» Boards</p>
-        <ul>
+      <aside className={`board_menu ${asideIsCollapsed ? "is_collapsed" : ""}`}>
+        <p className={`${asideIsCollapsed ? "hide" : ""}`}>» Boards</p>
+
+        <ul className={`${asideIsCollapsed ? "hide" : ""}`}>
           {boards?.map((board) => (
-            <li key={board.id}>
-              <Link
-                onClick={() => handleActiveBoard(board.id)}
-                to={`/boards/${board.id}`}
-              >
-                {board.title}
-              </Link>
-              <span className="board_list_buttons">×</span>
-            </li>
+            <Link
+              onClick={() => handleActiveBoard(board.id)}
+              to={`/boards/${board.id}`}
+              className="route_link"
+              key={board.id}>
+              <li
+                className={`${
+                  activeBoardId === board.id ? "route_link_active" : undefined
+                } ${asideIsCollapsed ? "hide" : ""}`}>
+                <span className="active_span">{board.title}</span>
+                {/* <span className="board_list_buttons">×</span> */}
+              </li>
+            </Link>
           ))}
         </ul>
-        <form onSubmit={handleAddBoard}>
+        <form
+          onSubmit={handleAddBoard}
+          className={`${asideIsCollapsed ? "hide" : ""}`}>
           <input
             type="text"
             id="boardTitle"
             placeholder="Add a board..."
             value={input}
+            maxLength="17"
             onChange={(e) => setInput(e.target.value)}
           />
           <button type="submit" disabled={input.length < 5}>
@@ -73,14 +86,52 @@ const Layout = ({ handleOpenModal }) => {
         </form>
       </aside>
       <Routes>
-        <Route path="/" element={<Welcome />} />
+        <Route
+          path="/"
+          element={
+            <Welcome
+              toggleCollapse={handleAsideCollapse}
+              asideIsCollapsed={asideIsCollapsed}
+            />
+          }
+        />
         <Route
           path="/boards/:boardId"
-          element={<Board handleOpenModal={handleOpenModal} />}
+          element={
+            <Board
+              handleOpenModal={handleOpenModal}
+              toggleCollapse={handleAsideCollapse}
+              asideIsCollapsed={asideIsCollapsed}
+            />
+          }
         />
-        <Route path="/users" element={<UserPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/info" element={<InfoPage />} />
+        <Route
+          path="/users"
+          element={
+            <UserPage
+              toggleCollapse={handleAsideCollapse}
+              asideIsCollapsed={asideIsCollapsed}
+            />
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <SettingsPage
+              toggleCollapse={handleAsideCollapse}
+              asideIsCollapsed={asideIsCollapsed}
+            />
+          }
+        />
+        <Route
+          path="/info"
+          element={
+            <InfoPage
+              toggleCollapse={handleAsideCollapse}
+              asideIsCollapsed={asideIsCollapsed}
+            />
+          }
+        />
       </Routes>
     </div>
   );

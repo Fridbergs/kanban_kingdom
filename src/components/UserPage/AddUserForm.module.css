@@ -1,0 +1,24 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #202020ec;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.label {
+  color: white;
+  margin: 0;
+  text-align: left;
+}
+
+.input {
+  margin: 0 0 -10px 0;
+  transition: outline 0.5s;
+  border-left: 3px solid transparent;
+}
+
+.input:hover {
+  border-left: 3px solid #414141;
+}

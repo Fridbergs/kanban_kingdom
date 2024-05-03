@@ -1,0 +1,16 @@
+.form_div {
+  width: 25%;
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin: 7px 20px 20px 20px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.p {
+  margin: 0 0 8px 2px;
+}

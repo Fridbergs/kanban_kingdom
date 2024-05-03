@@ -1,0 +1,44 @@
+.user_list_container {
+  display: flex;
+  flex-direction: column;
+  width: 72%;
+  height: calc(100vh - 62px);
+}
+
+.ul {
+  overflow-y: auto;
+}
+
+.ul>p {
+  margin-left: 2px;
+}
+
+.li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  background-color: #202020ec;
+  margin-top: 8px;
+  backdrop-filter: blur(3px);
+}
+
+.img {
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}

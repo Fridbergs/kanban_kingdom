@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import css from "./NavBar.module.css";
 
+function handleDeselectCurrentBoard() {}
+
 const NavBar = () => {
   return (
     <nav>
@@ -8,6 +10,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to="/"
+            onClick={handleDeselectCurrentBoard}
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
             })}>
@@ -41,6 +44,7 @@ const NavBar = () => {
             Users
           </NavLink>
         </li>
+        {/* Add navlink for listview, create listview page, add route in layout.jsx to listview page */}
       </ul>
     </nav>
   );

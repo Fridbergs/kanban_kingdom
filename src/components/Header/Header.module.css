@@ -9,6 +9,11 @@
   margin-bottom: 0;
 }
 
+.logo {
+  margin-top: 2px;
+  height: 46px;
+}
+
 .h1 {
   font-size: 1.3rem;
   font-weight: 300;

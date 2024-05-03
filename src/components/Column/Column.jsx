@@ -1,10 +1,31 @@
 import Story from "../Story/Story";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { addStory } from "../../slices/BoardSlice";
+import { addStory, moveStory } from "../../slices/BoardSlice";
+import { useDrop } from "react-dnd";
 import css from "./Column.module.css";
 
-const Column = ({ stories, column, board, handleOpenModal }) => {
+const Column = ({ stories, column, board, handleOpenModal, }) => {
+  const columnRef = useRef(column);
+  const boardId = board.id;
+
+
+  const handleMoveStory = (storyId, columnId) => {
+    dispatch(moveStory({ storyId, columnId, boardId }));
+    // console.log("Dropped into column:", columnRef.current.title);
+  };
+
+  const [{ isOver }, drop] = useDrop(() => ({
+    accept: "story",
+    drop: (story) => handleMoveStory(story.id, column.id),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  }));
+
+
+
+
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
 
@@ -19,7 +40,7 @@ const Column = ({ stories, column, board, handleOpenModal }) => {
   };
 
   return (
-    <section className={css.column}>
+    <section className={css.column} ref={drop} >
       {/* En form som lägger till stories */}
       <div className={css.column_header}>
         <h3 className={css.column_title}>{column.title}</h3>

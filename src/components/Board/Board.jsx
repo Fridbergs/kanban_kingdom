@@ -4,9 +4,9 @@ import Column from "../Column/Column";
 import { addColumn, editBoardName } from "../../slices/BoardSlice";
 import css from "./Board.module.css";
 import { useParams } from "react-router-dom";
-import ListViewPage from "./ListViewPage";
 import { FaTrello, FaStream } from "react-icons/fa";
-import "./Listview.css"
+import "./Listview.css";
+import ListPage from "./ListPage";
 
 const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
   const { boardId } = useParams();
@@ -64,11 +64,13 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
       <div
         className={`${css.board_header} ${
           asideIsCollapsed ? "full_width" : ""
-        }`}>
+        }`}
+      >
         <div className={css.left_side}>
           <button
             className="collapse_button no_margin"
-            onClick={toggleCollapse}>
+            onClick={toggleCollapse}
+          >
             {asideIsCollapsed ? ">" : "<"}
           </button>
           {isEditingBoardName ? (
@@ -108,7 +110,6 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
             <FaStream style={{ color: "blue" }} />
           )}
         </button>
-
       </div>
 
       {!isListview ? (
@@ -125,7 +126,7 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
           ))}
         </div>
       ) : (
-        <ListViewPage board={board} handleOpenModal={handleOpenModal} />
+        <ListPage board={board} handleOpenModal={handleOpenModal} />
       )}
       {/* <div className={css.column_container}>
         {board.columns.map((column) => (

@@ -2,7 +2,7 @@ import React from "react";
 import "./Listview.css";
 import Story from "../Story/Story";
 
-const ListviewPage = ({ board, handleOpenModal }) => {
+const ListPage = ({ board, handleOpenModal }) => {
   const columns = board.columns;
   const stories = columns.flatMap((column) => column.stories); // Flatten stories into one array
 
@@ -31,4 +31,4 @@ const ListviewPage = ({ board, handleOpenModal }) => {
   );
 };
 
-export default ListviewPage;
+export default ListPage;

@@ -13,7 +13,6 @@ const initialState = loadUsersFromLocalStorage();
 export const userSlice = createSlice({
   name: "users",
   initialState,
-  selectedUser: "Välj användare",
   reducers: {
     addUser: (state, action) => {
       const { name, photo } = action.payload;
@@ -22,6 +21,7 @@ export const userSlice = createSlice({
         name: name,
         dateJoined: getTimeStamp(),
         profilePhoto: photo,
+        selectedUser: false,
       };
       state.push(user);
       localStorage.setItem("users", JSON.stringify(state));
@@ -40,9 +40,8 @@ export const userSlice = createSlice({
         localStorage.setItem("users", JSON.stringify(state));
       }
     },
-    setSelectedUser: (state, action) => {
-      state.selectedUser = action.payload;
-    },
+    setSelectedUser: (state, action) => {},
+    //Få boolean att bli true och mappa mot id.
   },
 });
 

@@ -1,36 +1,34 @@
 import React from "react";
 import Select from "react-select";
-import { useDispatch } from "react-redux";
-import { setSelectedUser } from "../../slices/UserSlice"; // Justera sökvägen baserat på filstrukturen
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedUser } from "../../slices/UserSlice";
+import { useState } from "react";
 
 function UserSelector() {
+  const users = useSelector((state) => state.users);
+  console.log(users);
   const dispatch = useDispatch();
-  const users = [
-    { value: "Everyone", label: "Everyone" },
-    { value: "Mirza", label: "Mirza" },
-    { value: "Eva", label: "Eva" },
-    { value: "Caroline", label: "Caroline" },
-    { value: "Aleksei", label: "Aleksei" },
-    { value: "Jumi", label: "Jumi" },
-    { value: "Linus", label: "Linus" },
-    { value: "Jason", label: "Jason" },
-  ]; // Användarnamn som objekt för React Select
+  // const users = [];
 
-  const handleChange = (selectedOption) => {
-    // Säkerställ att ett värde finns, annars skicka en tom sträng eller ett standardvärde
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const handleChange = (event) => {
+    const selectedValue = event.target.value;
+    setSelectedOption(selectedValue);
+    console.log(selectedOption);
     dispatch(
       setSelectedUser(selectedOption ? selectedOption.value : "Välj användare")
     );
   };
-
+  //value={selectedOption}
   return (
-    <Select
-      options={users}
-      onChange={handleChange}
-      className="basic-select"
-      classNamePrefix="select"
-      placeholder="Välj användare" // Lägger till en placeholder i dropdown
-    />
+    <select>
+      {users.map((user) => (
+        <option onChange={handleChange} key={user.id} value={user.id}>
+          {user.id}
+        </option>
+      ))}
+    </select>
   );
 }
 

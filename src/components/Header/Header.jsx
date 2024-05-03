@@ -6,8 +6,10 @@ import { Link } from "react-router-dom";
 import css from "./Header.module.css";
 
 const Header = () => {
-  // Använd korrekt sökväg baserat på din slice struktur
-  const selectedUser = useSelector((state) => state.users.selectedUser);
+  const selectedUser = useSelector(
+    (state) => state.users.find((user) => user.selectedUser)
+    //Stoppar in den användaren som är selected user.
+  );
 
   return (
     <header className="css.header">

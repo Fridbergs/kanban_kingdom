@@ -24,6 +24,7 @@ export const userSlice = createSlice({
         name: name,
         dateJoined: getTimeStamp(),
         profilePhoto: photo,
+        selectedUser: false,
       };
       state.push(user);
       localStorage.setItem("users", JSON.stringify(state));
@@ -42,8 +43,11 @@ export const userSlice = createSlice({
         localStorage.setItem("users", JSON.stringify(state));
       }
     },
+    setSelectedUser: (state, action) => {},
+    //Få boolean att bli true och mappa mot id.
   },
 });
 
-export const { addUser, removeUser, updateUser } = userSlice.actions;
+export const { setSelectedUser, addUser, removeUser, updateUser } =
+  userSlice.actions;
 export default userSlice.reducer;

@@ -21,14 +21,13 @@ export const boardSlice = createSlice({
       localStorage.setItem("boards", JSON.stringify(state));
     },
     removeBoard: (state, action) => {
-      state = state.filter(
-        (board) => board.id !== action.payload
-      );
-      localStorage.setItem("boards", JSON.stringify(state));
+
+      state = state.filter((board) => board.id !== action.payload);
+      localStorage.setItem("boards", JSON.stringify(state)); // Update localStorage
     },
     addColumn: (state, action) => {
       const { title, boardId } = action.payload;
-      const boardIndex = state.findIndex(board => board.id === boardId);
+      const boardIndex = state.findIndex((board) => board.id === boardId);
       if (boardIndex !== -1) {
         const column = {
           id: nanoid(),
@@ -36,9 +35,10 @@ export const boardSlice = createSlice({
           dateCreated: getTimeStamp(),
           stories: [],
         };
-        state[boardIndex].columns.push(column)
+        state[boardIndex].columns.push(column);
       }
-      localStorage.setItem("boards", JSON.stringify(state));
+      localStorage.setItem("boards", JSON.stringify(state)); // Update localStorage
+
     },
     removeColumn: (state, action) => {
       state.columns = state.columns.filter(
@@ -46,10 +46,13 @@ export const boardSlice = createSlice({
       );
       localStorage.setItem("boards", JSON.stringify(state));
     },
+
     addStory: (state, action) => {
-      const { title, columnId, boardId} = action.payload;
-      const boardIndex = state.findIndex(board => board.id === boardId);
-      const columnIndex = state[boardIndex].columns.findIndex(column => column.id === columnId);
+      const { title, columnId, boardId } = action.payload;
+      const boardIndex = state.findIndex((board) => board.id === boardId);
+      const columnIndex = state[boardIndex].columns.findIndex(
+        (column) => column.id === columnId
+      );
       if (columnIndex !== -1 && boardIndex !== -1) {
         const story = {
           id: nanoid(),
@@ -62,8 +65,9 @@ export const boardSlice = createSlice({
           userOwnership: [],
           tasks: [],
         };
-        state[boardIndex].columns[columnIndex].stories.push(story)
-        localStorage.setItem("boards", JSON.stringify(state));
+
+        state[boardIndex].columns[columnIndex].stories.push(story);
+        localStorage.setItem("boards", JSON.stringify(state)); // Update localStorage
       }
     },
     removeStory: (state, action) => {
@@ -73,10 +77,14 @@ export const boardSlice = createSlice({
       localStorage.setItem("boards", JSON.stringify(state));
     },
     addTask: (state, action) => {
-      const { title, columnId, boardId, storyId} = action.payload;
-      const boardIndex = state.findIndex(board => board.id === boardId);
-      const columnIndex = state[boardIndex].columns.findIndex(column => column.id === columnId);
-      const storyIndex = state[boardIndex].columns[columnIndex].stories.findIndex(story => story.id === storyId);
+      const { title, columnId, boardId, storyId } = action.payload;
+      const boardIndex = state.findIndex((board) => board.id === boardId);
+      const columnIndex = state[boardIndex].columns.findIndex(
+        (column) => column.id === columnId
+      );
+      const storyIndex = state[boardIndex].columns[
+        columnIndex
+      ].stories.findIndex((story) => story.id === storyId);
       if (columnIndex !== -1 && boardIndex !== -1 && storyIndex !== -1) {
         const task = {
           id: nanoid(),
@@ -90,59 +98,75 @@ export const boardSlice = createSlice({
           isCompleted: false,
           userOwnership: [],
         };
-        state[boardIndex].columns[columnIndex].stories[storyIndex].tasks.push(task)
-        localStorage.setItem("boards", JSON.stringify(state));
+
+        state[boardIndex].columns[columnIndex].stories[storyIndex].tasks.push(
+          task
+        );
+        localStorage.setItem("boards", JSON.stringify(state)); // Update localStorage
       }
     },
     removeTask: (state, action) => {
       const { boardId, columnId, storyId, taskId } = action.payload;
       const boardIndex = state.findIndex((board) => board.id === boardId);
       if (boardIndex !== -1) {
-        const columnIndex = state[boardIndex].columns.findIndex((column) => column.id === columnId);
+        const columnIndex = state[boardIndex].columns.findIndex(
+          (column) => column.id === columnId
+        );
         if (columnIndex !== -1) {
-          const storyIndex = state[boardIndex].columns[columnIndex].stories.findIndex((story) => story.id === storyId);
+          const storyIndex = state[boardIndex].columns[
+            columnIndex
+          ].stories.findIndex((story) => story.id === storyId);
           if (storyIndex !== -1) {
+
             state[boardIndex].columns[columnIndex].stories[storyIndex].tasks = state[boardIndex].columns[columnIndex].stories[storyIndex].tasks.filter(
               (task) => task.id !== taskId
             );
+
           }
         }
       }
       localStorage.setItem("boards", JSON.stringify(state));
     },
+
+    editBoardName: (state, action) => {
+      const { boardName, boardId } = action.payload;
+      const boardIndex = state.findIndex((board) => board.id === boardId);
+      state[boardIndex].title = boardName;
+    },
+
     editTask: (state, action) => {
       const { boardId, columnId, storyId, taskId, editedTask } = action.payload;
-      return state.map(board => {
+      return state.map((board) => {
         if (board.id !== boardId) {
           return board;
         }
         return {
           ...board,
-          columns: board.columns.map(column => {
+          columns: board.columns.map((column) => {
             if (column.id !== columnId) {
               return column;
             }
             return {
               ...column,
-              stories: column.stories.map(story => {
+              stories: column.stories.map((story) => {
                 if (story.id !== storyId) {
                   return story;
                 }
                 return {
                   ...story,
-                  tasks: story.tasks.map(task => {
+                  tasks: story.tasks.map((task) => {
                     if (task.id !== taskId) {
                       return task;
                     }
                     return {
                       ...task,
-                      ...editedTask
+                      ...editedTask,
                     };
-                  })
+                  }),
                 };
-              })
+              }),
             };
-          })
+          }),
         };
       });
       localStorage.setItem("boards", JSON.stringify(state));
@@ -186,13 +210,13 @@ export const {
   addBoard,
   removeBoard,
   addColumn,
-  removeColumn ,
+  removeColumn,
   addTask,
-  editTask, 
+  editTask,
   removeTask,
   addStory,
   removeStory,
-  moveStory,
+  moveStory, 
+  editBoardName
 } = boardSlice.actions;
-
 export default boardSlice.reducer;

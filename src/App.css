@@ -10,6 +10,11 @@
   scrollbar-color: #fff6 #00000026;
 }
 
+#root {
+  max-height: 100vh;
+  min-height: 100vh;
+}
+
 /* Container som håller allt innehåll under headern*/
 
 .container {
@@ -36,28 +41,37 @@
 /* Container som håller menyn till vänster */
 
 .board_menu {
-  max-width: 200px;
+  width: 200px;
   min-width: 200px;
   background-color: #202020ec;
   backdrop-filter: blur(3px);
   border-top: 1px solid #414141;
   border-radius: 0;
   max-height: 100vh;
+  transition: all .5s;
 }
 
 .board_menu form {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all .5s;
 }
 
 .board_menu p {
   margin: 10px 0 5px 5px;
   font-size: 0.9rem;
+  transition: all .5s;
+}
+
+.hide {
+  opacity: 0;
+  transform: translateX(-200px);
 }
 
 .board_menu ul {
   width: 100%;
+  transition: all .5s;
 }
 
 .board_menu ul li {
@@ -68,11 +82,54 @@
   border-radius: 0;
   width: 100%;
   position: relative;
-  transition: all 0.3s;
+  transition: all .5s;
+}
+
+.is_collapsed {
+  width: 3px;
+  min-width: 3px;
+}
+
+.collapse_button {
+  position: relative;
+  height: 35px;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0 7px 0 4px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  z-index: 2;
+  background-color: #202020ec;
+  backdrop-filter: blur(3px);
+  margin-top: 7px;
+  border: 0;
+  transition: color 0.5s;
+  cursor: pointer;
+}
+
+.no_margin {
+  margin-top: 0;
+}
+
+.collapse_button:hover {
+  color: #6bb3f9;
 }
 
 .route_link {
   text-decoration: none;
+}
+
+.route_link_active {
+  text-decoration: none;
+}
+
+.active_span {
+  transition: all .5s;
+}
+
+.route_link_active>span {
+  margin-left: 5px;
+  color: #6bb3f9;
 }
 
 .board_menu ul li:hover {
@@ -108,7 +165,7 @@
   padding: 1px 5px;
   color: white;
   background-color: transparent;
-  transition: all 0.3s;
+  transition: all 0.5s;
   border: 0;
   outline: 1px solid transparent;
   border-radius: 2px;
@@ -154,4 +211,8 @@ Syns bara när man hoverar över list items i menyn. */
 .user_page_button:hover {
   background-color: #afafaf;
   cursor: pointer;
+}
+
+.full_width {
+  width: 100vw;
 }

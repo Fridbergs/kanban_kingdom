@@ -13,4 +13,5 @@ select option {
 select {
   background-color: #202020;
   color: whitesmoke;
+  margin-right: 2rem;
 }

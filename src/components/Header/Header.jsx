@@ -25,9 +25,8 @@ const Header = () => {
         {/* <h1 className={css.h1}>KANBAN KINGDOM</h1> */}
       </Link>
 
-      <p>Inloggad som: {selectedUser || "Välj Användare"}</p>
+      <p>Inloggad som: {  }</p>
 
-      <NavBar />
 
       <UserSelector />
     </header>

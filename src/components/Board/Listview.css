@@ -1,0 +1,45 @@
+.listview-div article {
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    background-color: #202020dc;
+    backdrop-filter: blur(4px);
+    border: 1px solid #afafaf57;
+    transition: border 0.3s;
+    border-radius: 5px;
+    max-width: 96%;
+    margin: 5px 5px;
+    width: 100%;
+    padding: 0.5rem 4px;
+    margin: 0;
+    margin-top: 4px;
+    max-width: 400px;
+  }
+  
+  .listview-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 1rem;
+    width: 100%;
+  }
+  
+  .listBtn {
+    font-size: 2rem;
+    background-color: transparent;
+    color: rgb(55, 198, 255);
+    border: none;
+  }
+  
+  .listBtn svg {
+    color: rgb(55, 198, 255);
+  }
+  
+  
+  .change-view {
+    font-size: 1rem;
+    font-weight: 100;
+  }

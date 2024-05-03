@@ -4,6 +4,8 @@ import Column from "../Column/Column";
 import { addColumn, editBoardName } from "../../slices/BoardSlice";
 import css from "./Board.module.css";
 import { useParams } from "react-router-dom";
+import ListviewPage from "./ListViewPage";
+import { FaTrello, FaStream } from "react-icons/fa";
 
 const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
   const { boardId } = useParams();
@@ -14,7 +16,14 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
   const board = boards.find((board) => board.id === boardId);
   const [input, setInput] = useState("");
   const [isEditingBoardName, setIsEditingBoardName] = useState(false);
+  const [isListview, setIsListview] = useState(false);
   const dispatch = useDispatch();
+
+  const handleListviewClick = (e) => {
+    e.preventDefault();
+    setIsListview(!isListview);
+    console.log(isListview);
+  };
 
   const handleAddColumn = (e) => {
     e.preventDefault();
@@ -87,8 +96,39 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
             +{" "}
           </button>
         </form>
+
+        <button
+          className="listBtn"
+          onClick={handleListviewClick}
+          style={{ color: "blue", marginLeft: "2rem" }}
+        >
+          {!isListview ? (
+            <FaTrello style={{ color: "blue" }} />
+          ) : (
+            <FaStream style={{ color: "blue" }} />
+          )}
+        </button>
+
       </div>
-      <div className={css.column_container}>
+
+      {!isListview ? (
+        <div className={css.column_container}>
+          {board.columns.map((column) => (
+            <Column
+              handleOpenModal={handleOpenModal}
+              key={column.id}
+              stories={column.stories}
+              board={board}
+              columns={board.columns}
+              column={column}
+            />
+          ))}
+        </div>
+      ) : (
+        <ListviewPage board={board} handleOpenModal={handleOpenModal} />
+      )}
+
+      {/* <div className={css.column_container}>
         {board.columns.map((column) => (
           <Column
             handleOpenModal={handleOpenModal}
@@ -98,7 +138,7 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
             column={column}
           />
         ))}
-      </div>
+      </div> */}
     </main>
   );
 };

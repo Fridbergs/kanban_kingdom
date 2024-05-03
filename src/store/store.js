@@ -11,7 +11,7 @@ const saveToLocalStorage = (store) => (next) => (action) => {
 const store = configureStore({
   reducer: {
     boards: boardReducer,
-    users: userReducer, // Include userSlice reducer in the store
+    users: userReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(saveToLocalStorage),

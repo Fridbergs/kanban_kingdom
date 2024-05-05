@@ -29,23 +29,26 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
   // redux dispatch
   const dispatch = useDispatch();
 
-  
+  // function to toggle list view 
   const handleListviewClick = (e) => {
     e.preventDefault();
     setIsListview(!isListview);
     console.log(isListview);
   };
 
+  // function to add column 
   const handleAddColumn = (e) => {
     e.preventDefault();
     dispatch(addColumn({ title: input, boardId: board.id }));
     setInput("");
   };
 
+  // function to handle board name change 
   function handleBoardNameChange(e) {
     dispatch(editBoardName({ boardName: e.target.value, boardId: board.id }));
   }
 
+  // function to handle to toggle board name edit mode 
   function handleToggleBoardNameEdit() {
     setIsEditingBoardName((prev) => !prev);
     if (focusBoardNameEdit.current) {
@@ -53,10 +56,12 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
     }
   }
 
+  // listen to key press for board edit 
   function handleKeyPress(e) {
     if (e.key === "Enter") handleToggleBoardNameEdit();
   }
 
+  // handle focus on board name edit input 
   useEffect(() => {
     if (focusBoardNameEdit.current) {
       focusBoardNameEdit.current.focus();

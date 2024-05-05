@@ -10,20 +10,20 @@ const AddUserForm = () => {
     photo: "",
   });
   const dispatch = useDispatch();
-
+  
+  // Handle add user 
   const handleAddUser = (e) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.photo.trim()) return;
 
     dispatch(addUser(formData));
     setFormData({ name: "", photo: "" });
+
   };
+
 
   return (
     <form className={css.form} onSubmit={handleAddUser}>
-      {/* <label htmlFor="name" className={css.label}>
-        Name:
-      </label> */}
       <input
         type="text"
         id="name"
@@ -33,9 +33,6 @@ const AddUserForm = () => {
         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
       />
       <br />
-      {/* <label htmlFor="photo" className={css.label}>
-        Photo URL:
-      </label> */}
       <input
         type="text"
         id="photo"

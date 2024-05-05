@@ -21,9 +21,10 @@ const Story = ({ tasks, story, column, board, handleOpenModal, columns }) => {
     let foundColumnId = null;
     // search through all columns
     columns.forEach((column) => {
-      //om storyn hittas i en column === columnId
+      //if story is found in a column === columnId
       if (column.stories.find((s) => s.id === storyId)) {
-        foundColumnId = column.id; // Set the foundColumnId
+        // Set the foundColumnId
+        foundColumnId = column.id; 
       }
     });
     columnId = foundColumnId;
@@ -32,6 +33,7 @@ const Story = ({ tasks, story, column, board, handleOpenModal, columns }) => {
   const boardId = board.id;
   const storyId = story.id;
 
+  // function to drag story 
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "story",
     item: { id: story.id },
@@ -40,7 +42,7 @@ const Story = ({ tasks, story, column, board, handleOpenModal, columns }) => {
     }),
   }));
 
-
+// function for adding a task to a story
   const handleAddTask = (e) => {
     e.preventDefault();
     dispatch(addTask({ title: input, columnId, boardId, storyId }));
@@ -50,7 +52,6 @@ const Story = ({ tasks, story, column, board, handleOpenModal, columns }) => {
   return (
 
     <article className={css.story} ref={drag} >
-      {/* en form som lägger till tasks */}
       <h4>{story.title}</h4>
       <div className={css.task_div}>
         {tasks.map((task) => (

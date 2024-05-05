@@ -5,8 +5,8 @@ import css from "./UserList.module.css";
 const UserList = ({ users }) => {
   const dispatch = useDispatch();
 
+  // Dispatch the removeUser action with the userId
   const handleRemoveUser = (userId) => {
-    // Dispatch the removeUser action with the userId
     dispatch(removeUser(userId));
   };
 

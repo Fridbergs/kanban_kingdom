@@ -5,7 +5,8 @@ const Task = ({ task, handleOpenModal, boardId, columnId, storyId }) => {
   const ids = { boardId, columnId, storyId };
 
   const handleClick = () => {
-    handleOpenModal(task.id, task, ids); // Pass the task ID to the handleOpenModal function
+    // Pass the task ID to the handleOpenModal function
+    handleOpenModal(task.id, task, ids); 
   };
 
   return (

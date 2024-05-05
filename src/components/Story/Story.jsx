@@ -11,15 +11,15 @@ const Story = ({ tasks, story, column, board, handleOpenModal, columns }) => {
 
   let columnId = null;
 
-  //undersöker om det är Column.jsx som renderar ut Story (med column som prop)
+  // checks if it's Column.jsx that renders Story (with column as prop)
   if (column) {
-    // hittar isf column.id
+    // if column.id is found
     columnId = column.id;
   } else {
-    // annars renderas den ut från ListviewPage.jsx och hittar id genom column-arrayn
+    // else render out from ListviewPage.jsx and finds id through the column array
     const storyId = story.id;
     let foundColumnId = null;
-    //letar gneom alla columns
+    // search through all columns
     columns.forEach((column) => {
       //om storyn hittas i en column === columnId
       if (column.stories.find((s) => s.id === storyId)) {

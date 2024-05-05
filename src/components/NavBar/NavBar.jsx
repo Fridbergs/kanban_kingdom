@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import css from "./NavBar.module.css";
 
-function handleDeselectCurrentBoard() {}
 
 const NavBar = () => {
   return (
@@ -10,7 +9,6 @@ const NavBar = () => {
         <li>
           <NavLink
             to="/"
-            onClick={handleDeselectCurrentBoard}
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
             })}>

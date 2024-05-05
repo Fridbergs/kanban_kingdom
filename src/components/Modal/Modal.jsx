@@ -34,9 +34,6 @@ const Modal = ({ task, onClose, ids }) => {
   const [userOwnership, setUserOwnership] = useState(task.userOwnership);
   const [users, setUsers] = useState([]);
 
-  //vi hämatar users från userSlice - useSelctor
-  // spara user.name i en array som blir select (eva fix)
-  // Dummy user data
   useEffect(() => {
     // Retrieve users from localStorage
     const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
@@ -61,19 +58,22 @@ const Modal = ({ task, onClose, ids }) => {
     { label: "PO Request", value: "PO Request" },
     { label: "Styling", value: "Styling" },
     { label: "Functionality", value: "Functionality" },
-    { label: "Fuck Ups", value: "Fuck Ups" }, // Assuming this is "Fuck Ups" with a typo
+    { label: "Fuck Ups", value: "Fuck Ups" }, 
   ];
 
+  // function to set or change ownership 
   const handleUserOwnershipChange = (selectedOptions) => {
     const selectedUsers = selectedOptions.map((option) => option.value);
     setUserOwnership(selectedUsers);
   };
 
+  // function to set or change categories 
   const handleCategoryChange = (selectedOptions) => {
     const selectedCategories = selectedOptions.map((option) => option.value);
     setCategories(selectedCategories);
   };
 
+  // function to update all parts of story 
   const handleChange = (e) => {
     const { name, value, type, checked, options } = e.target;
     // Update the corresponding local state based on the input name
@@ -140,6 +140,7 @@ const Modal = ({ task, onClose, ids }) => {
     onClose();
   };
 
+  // function to delete task  
   const handleDeleteTask = () => {
     dispatch(removeTask({ boardId, columnId, storyId, taskId: task.id }));
     onClose();

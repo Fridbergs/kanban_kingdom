@@ -9,17 +9,27 @@ import "./Listview.css";
 import ListPage from "./ListPage";
 
 const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
+  // get the id from the url params
   const { boardId } = useParams();
+
+  // reference input field for board name edit 
   const focusBoardNameEdit = useRef(null);
+
+  // get boards from redux store 
   const boards = useSelector((state) => state.boards);
 
   // Find the board using the parsed boardId as a string
   const board = boards.find((board) => board.id === boardId);
+
+  // useState for column input, list view toggle and edit board name 
   const [input, setInput] = useState("");
   const [isListview, setIsListview] = useState(false);
   const [isEditingBoardName, setIsEditingBoardName] = useState(false);
+
+  // redux dispatch
   const dispatch = useDispatch();
 
+  
   const handleListviewClick = (e) => {
     e.preventDefault();
     setIsListview(!isListview);

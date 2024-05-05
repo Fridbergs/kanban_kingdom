@@ -42,7 +42,6 @@ const NavBar = () => {
             Users
           </NavLink>
         </li>
-        {/* Add navlink for listview, create listview page, add route in layout.jsx to listview page */}
       </ul>
     </nav>
   );

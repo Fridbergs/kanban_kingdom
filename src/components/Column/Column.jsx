@@ -9,12 +9,13 @@ const Column = ({ stories, column, board, handleOpenModal, }) => {
   const columnRef = useRef(column);
   const boardId = board.id;
 
-
+  // function to handle moving stories inside column 
   const handleMoveStory = (storyId, columnId) => {
     dispatch(moveStory({ storyId, columnId, boardId }));
     // console.log("Dropped into column:", columnRef.current.title);
   };
-
+  
+  // drop stories in right target 
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "story",
     drop: (story) => handleMoveStory(story.id, column.id),
@@ -23,12 +24,10 @@ const Column = ({ stories, column, board, handleOpenModal, }) => {
     }),
   }));
 
-
-
-
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
 
+  // function to add story 
   const handleAddStory = (e) => {
     e.preventDefault();
     console.log(column.id);

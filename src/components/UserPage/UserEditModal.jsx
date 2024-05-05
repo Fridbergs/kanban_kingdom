@@ -13,17 +13,19 @@ const UserEditModal = ({ userId }) => {
     setUserData(selectedUser);
   }, [users, userId]);
 
+  // Handle change of input
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
   };
 
+  // Close the modal or reset the selected user ID state
   const handleUpdateUser = () => {
     dispatch(updateUser(userData));
-    // Close the modal or reset the selected user ID state
   };
-
-  if (!userData) return null; // Return null if user data is not available yet
+  
+  // Return null if user data is not available yet
+  if (!userData) return null; 
 
   return (
     <div className="modal-overlay">

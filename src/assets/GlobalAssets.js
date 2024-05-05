@@ -1,3 +1,4 @@
+// Function to get date in yyyy-mm-dd 
 function getTimeStamp() {
   const today = new Date();
   const year = today.getFullYear();

@@ -10,7 +10,7 @@ import logo from "../../assets/images/logo.png";
 const Header = () => {
   const selectedUser = useSelector(
     (state) => state.users.find((user) => user.selectedUser)
-    //Stoppar in den användaren som är selected user.
+    // showing the user that is the selected user 
   );
 
   return (
@@ -19,7 +19,6 @@ const Header = () => {
       <Link to={"/"} className="route_link">
         {" "}
         <img
-
           className={css.logo}
           src={logo}
           alt="Kanban Kingdom - Malmö Marvels"
@@ -27,8 +26,7 @@ const Header = () => {
         {/* <h1 className={css.h1}>KANBAN KINGDOM</h1> */}
       </Link>
 
-      <p>Inloggad som: {  }</p>
-
+      <p>Inloggad som: {}</p>
 
       <UserSelector />
     </header>

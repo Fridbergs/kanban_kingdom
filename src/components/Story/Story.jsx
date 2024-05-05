@@ -11,19 +11,20 @@ const Story = ({ tasks, story, column, board, handleOpenModal, columns }) => {
 
   let columnId = null;
 
-  //undersöker om det är Column.jsx som renderar ut Story (med column som prop)
+  // checks if it's Column.jsx that renders Story (with column as prop)
   if (column) {
-    // hittar isf column.id
+    // if column.id is found
     columnId = column.id;
   } else {
-    // annars renderas den ut från ListviewPage.jsx och hittar id genom column-arrayn
+    // else render out from ListviewPage.jsx and finds id through the column array
     const storyId = story.id;
     let foundColumnId = null;
-    //letar gneom alla columns
+    // search through all columns
     columns.forEach((column) => {
-      //om storyn hittas i en column === columnId
+      //if story is found in a column === columnId
       if (column.stories.find((s) => s.id === storyId)) {
-        foundColumnId = column.id; // Set the foundColumnId
+        // Set the foundColumnId
+        foundColumnId = column.id; 
       }
     });
     columnId = foundColumnId;
@@ -32,6 +33,7 @@ const Story = ({ tasks, story, column, board, handleOpenModal, columns }) => {
   const boardId = board.id;
   const storyId = story.id;
 
+  // function to drag story 
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "story",
     item: { id: story.id },
@@ -40,7 +42,7 @@ const Story = ({ tasks, story, column, board, handleOpenModal, columns }) => {
     }),
   }));
 
-
+// function for adding a task to a story
   const handleAddTask = (e) => {
     e.preventDefault();
     dispatch(addTask({ title: input, columnId, boardId, storyId }));
@@ -50,7 +52,6 @@ const Story = ({ tasks, story, column, board, handleOpenModal, columns }) => {
   return (
 
     <article className={css.story} ref={drag} >
-      {/* en form som lägger till tasks */}
       <h4>{story.title}</h4>
       <div className={css.task_div}>
         {tasks.map((task) => (

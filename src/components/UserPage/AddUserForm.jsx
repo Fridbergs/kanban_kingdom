@@ -10,17 +10,18 @@ const AddUserForm = () => {
     photo: "",
   });
   const dispatch = useDispatch();
-  
+
   // Handle add user 
   const handleAddUser = (e) => {
     e.preventDefault();
-    if (!formData.name.trim() || !formData.photo.trim()) return;
+    if (!formData.name.trim()) return;
 
-    dispatch(addUser(formData));
+    // Default photo URL if input left empty
+    const photoUrl = formData.photo.trim() ? formData.photo.trim() : "https://www.google.com/url?sa=i&url=http%3A%2F%2Ft1.gstatic.com%2Flicensed-image%3Fq%3Dtbn%3AANd9GcS8piVHY8Mf7p62OkwcgqmZjlWI8WS58uafqox6EPKAt6OE8IWu3Aow6W-iQHJJLJ09&psig=AOvVaw15qI_ar6UncVw1kTfSZIFW&ust=1714821092086000&source=images&cd=vfe&opi=89978449&ved=0CAoQjRxqFwoTCMiKqMOs8YUDFQAAAAAdAAAAABAE";
+
+    dispatch(addUser({ name: formData.name, photo: photoUrl }));
     setFormData({ name: "", photo: "" });
-
   };
-
 
   return (
     <form className={css.form} onSubmit={handleAddUser}>
@@ -37,7 +38,7 @@ const AddUserForm = () => {
         type="text"
         id="photo"
         className={css.input}
-        placeholder="Photo URL"
+        placeholder="Photo URL (optional)"
         value={formData.photo}
         onChange={(e) => setFormData({ ...formData, photo: e.target.value })}
       />

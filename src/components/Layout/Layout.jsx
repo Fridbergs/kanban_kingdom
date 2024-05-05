@@ -10,9 +10,11 @@ import { addBoard, setBoards } from "../../slices/BoardSlice";
 import "../../App.css";
 
 const Layout = ({ handleOpenModal }) => {
-  const [activeBoardId, setActiveBoardId] = useState(""); // Store the ID of the active board
+  // Store the ID of the active board
+  const [activeBoardId, setActiveBoardId] = useState("");
   const [asideIsCollapsed, setAsideIsCollapsed] = useState(false);
-  const [input, setInput] = useState(""); // Input value for new board title
+  // Input value for new board title
+  const [input, setInput] = useState("");
 
   const dispatch = useDispatch();
 
@@ -28,20 +30,25 @@ const Layout = ({ handleOpenModal }) => {
     }
   }, [dispatch]);
 
+  // Set the ID of the active board
   const handleActiveBoard = (id) => {
-    setActiveBoardId(id); // Set the ID of the active board
+    setActiveBoardId(id); 
   };
 
   const handleAddBoard = (e) => {
     e.preventDefault();
-    if (!input.trim()) return; // Prevent adding empty board titles
+    // Prevent adding empty board titles
+    if (!input.trim()) return; 
     dispatch(addBoard(input));
-    setInput(""); // Reset input field
+    // Reset input field
+    setInput(""); 
   };
 
+  // function to toggle side bar collapse 
   function handleAsideCollapse() {
     setAsideIsCollapsed((prev) => !prev);
   }
+  
   // Get boards from Redux state
   const boards = useSelector((state) => state.boards);
   // const board = boards.find((board) => board.id === activeBoardId);
@@ -57,11 +64,13 @@ const Layout = ({ handleOpenModal }) => {
               onClick={() => handleActiveBoard(board.id)}
               to={`/boards/${board.id}`}
               className="route_link"
-              key={board.id}>
+              key={board.id}
+            >
               <li
                 className={`${
                   activeBoardId === board.id ? "route_link_active" : undefined
-                } ${asideIsCollapsed ? "hide" : ""}`}>
+                } ${asideIsCollapsed ? "hide" : ""}`}
+              >
                 <span className="active_span">{board.title}</span>
                 {/* <span className="board_list_buttons">×</span> */}
               </li>
@@ -70,7 +79,8 @@ const Layout = ({ handleOpenModal }) => {
         </ul>
         <form
           onSubmit={handleAddBoard}
-          className={`${asideIsCollapsed ? "hide" : ""}`}>
+          className={`${asideIsCollapsed ? "hide" : ""}`}
+        >
           <input
             type="text"
             id="boardTitle"

@@ -89,7 +89,7 @@ const Layout = ({ handleOpenModal }) => {
             maxLength="17"
             onChange={(e) => setInput(e.target.value)}
           />
-          <button type="submit" disabled={input.length < 5}>
+          <button type="submit" disabled={input.length < 2}>
             {" "}
             +{" "}
           </button>

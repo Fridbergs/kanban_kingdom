@@ -12,16 +12,16 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
   // get the id from the url params
   const { boardId } = useParams();
 
-  // reference input field for board name edit 
+  // reference input field for board name edit
   const focusBoardNameEdit = useRef(null);
 
-  // get boards from redux store 
+  // get boards from redux store
   const boards = useSelector((state) => state.boards);
 
   // Find the board using the parsed boardId as a string
   const board = boards.find((board) => board.id === boardId);
 
-  // useState for column input, list view toggle and edit board name 
+  // useState for column input, list view toggle and edit board name
   const [input, setInput] = useState("");
   const [isListview, setIsListview] = useState(false);
   const [isEditingBoardName, setIsEditingBoardName] = useState(false);
@@ -29,26 +29,26 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
   // redux dispatch
   const dispatch = useDispatch();
 
-  // function to toggle list view 
+  // function to toggle list view
   const handleListviewClick = (e) => {
     e.preventDefault();
     setIsListview(!isListview);
     console.log(isListview);
   };
 
-  // function to add column 
+  // function to add column
   const handleAddColumn = (e) => {
     e.preventDefault();
     dispatch(addColumn({ title: input, boardId: board.id }));
     setInput("");
   };
 
-  // function to handle board name change 
+  // function to handle board name change
   function handleBoardNameChange(e) {
     dispatch(editBoardName({ boardName: e.target.value, boardId: board.id }));
   }
 
-  // function to handle to toggle board name edit mode 
+  // function to handle to toggle board name edit mode
   function handleToggleBoardNameEdit() {
     setIsEditingBoardName((prev) => !prev);
     if (focusBoardNameEdit.current) {
@@ -56,12 +56,12 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
     }
   }
 
-  // listen to key press for board edit 
+  // listen to key press for board edit
   function handleKeyPress(e) {
     if (e.key === "Enter") handleToggleBoardNameEdit();
   }
 
-  // handle focus on board name edit input 
+  // handle focus on board name edit input
   useEffect(() => {
     if (focusBoardNameEdit.current) {
       focusBoardNameEdit.current.focus();

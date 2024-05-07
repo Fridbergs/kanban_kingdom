@@ -58,7 +58,7 @@ const Modal = ({ task, onClose, ids }) => {
     { label: "PO Request", value: "PO Request" },
     { label: "Styling", value: "Styling" },
     { label: "Functionality", value: "Functionality" },
-    { label: "Fuck Ups", value: "Fuck Ups" }, 
+    { label: "Fuck Ups", value: "Fuck Ups" },
   ];
 
   // function to set or change ownership 
@@ -190,7 +190,7 @@ const Modal = ({ task, onClose, ids }) => {
             <FaClock /> Deadline
           </label>
           <input
-            type="text"
+            type="date"
             id="deadLine"
             name="deadLine"
             value={deadLine}
@@ -202,7 +202,7 @@ const Modal = ({ task, onClose, ids }) => {
             <FaCalendarAlt /> Due Date
           </label>
           <input
-            type="text"
+            type="date"
             id="dueDate"
             name="dueDate"
             value={dueDate}

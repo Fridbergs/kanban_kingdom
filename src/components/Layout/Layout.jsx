@@ -29,6 +29,7 @@ const Layout = ({ handleOpenModal }) => {
       // Update Redux state with the boards from local storage
       dispatch(setBoards(storedBoards));
     }
+    // console.log(boards);
   }, [dispatch]);
 
   // Set the ID of the active board
@@ -47,9 +48,8 @@ const Layout = ({ handleOpenModal }) => {
 
   // function to delete board
   const handleDeleteBoard = (board) => {
-    console.log('DELETE: ', board.title);
-    // e.preventDefault();
-    // dispatch(removeBoard({ boardId: board.id }));
+    // console.log('DELETE: ', board.title);
+    dispatch(removeBoard(board));
   };
 
   // function to toggle side bar collapse
@@ -59,6 +59,7 @@ const Layout = ({ handleOpenModal }) => {
 
   // Get boards from Redux state
   const boards = useSelector((state) => state.boards);
+
   // const board = boards.find((board) => board.id === activeBoardId);
 
   return (

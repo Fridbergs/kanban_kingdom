@@ -1,10 +1,10 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
-import { getTimeStamp } from "../assets/GlobalAssets";
+import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { getTimeStamp } from '../assets/GlobalAssets';
 
 const initialState = [];
 
 export const boardSlice = createSlice({
-  name: "board",
+  name: 'board',
   initialState,
   reducers: {
     setBoards: (state, action) => {
@@ -18,12 +18,15 @@ export const boardSlice = createSlice({
         columns: [],
       };
       state.push(board);
-      localStorage.setItem("boards", JSON.stringify(state));
+      localStorage.setItem('boards', JSON.stringify(state));
     },
     removeBoard: (state, action) => {
-
-      state = state.filter((board) => board.id !== action.payload);
-      localStorage.setItem("boards", JSON.stringify(state)); // Update localStorage
+      const boardToRemove = action.payload;
+      const index = state.findIndex((board) => board.id === boardToRemove.id);
+      if (index !== -1) {
+        state.splice(index, 1);
+        localStorage.setItem('boards', JSON.stringify(state)); // Update localStorage
+      }
     },
     addColumn: (state, action) => {
       const { title, boardId } = action.payload;
@@ -37,14 +40,13 @@ export const boardSlice = createSlice({
         };
         state[boardIndex].columns.push(column);
       }
-      localStorage.setItem("boards", JSON.stringify(state)); // Update localStorage
-
+      localStorage.setItem('boards', JSON.stringify(state)); // Update localStorage
     },
     removeColumn: (state, action) => {
       state.columns = state.columns.filter(
         (column) => column.id !== action.payload
       );
-      localStorage.setItem("boards", JSON.stringify(state));
+      localStorage.setItem('boards', JSON.stringify(state));
     },
 
     addStory: (state, action) => {
@@ -57,24 +59,24 @@ export const boardSlice = createSlice({
         const story = {
           id: nanoid(),
           title: title,
-          content: "",
+          content: '',
           dateCreated: getTimeStamp(),
-          deadLine: "",
-          dueDate: "",
+          deadLine: '',
+          dueDate: '',
           isUrgent: false,
           userOwnership: [],
           tasks: [],
         };
 
         state[boardIndex].columns[columnIndex].stories.push(story);
-        localStorage.setItem("boards", JSON.stringify(state)); // Update localStorage
+        localStorage.setItem('boards', JSON.stringify(state)); // Update localStorage
       }
     },
     removeStory: (state, action) => {
       state.columns.stories = state.columns.stories.filter(
         (story) => story.id !== action.payload
       );
-      localStorage.setItem("boards", JSON.stringify(state));
+      localStorage.setItem('boards', JSON.stringify(state));
     },
     addTask: (state, action) => {
       const { title, columnId, boardId, storyId } = action.payload;
@@ -89,11 +91,11 @@ export const boardSlice = createSlice({
         const task = {
           id: nanoid(),
           title: title,
-          content: "",
-          dateCreated: "",
+          content: '',
+          dateCreated: '',
           categories: [],
-          deadLine: "",
-          dueDate: "",
+          deadLine: '',
+          dueDate: '',
           isUrgent: false,
           isCompleted: false,
           userOwnership: [],
@@ -102,7 +104,7 @@ export const boardSlice = createSlice({
         state[boardIndex].columns[columnIndex].stories[storyIndex].tasks.push(
           task
         );
-        localStorage.setItem("boards", JSON.stringify(state)); // Update localStorage
+        localStorage.setItem('boards', JSON.stringify(state)); // Update localStorage
       }
     },
     removeTask: (state, action) => {
@@ -117,15 +119,14 @@ export const boardSlice = createSlice({
             columnIndex
           ].stories.findIndex((story) => story.id === storyId);
           if (storyIndex !== -1) {
-
-            state[boardIndex].columns[columnIndex].stories[storyIndex].tasks = state[boardIndex].columns[columnIndex].stories[storyIndex].tasks.filter(
-              (task) => task.id !== taskId
-            );
-
+            state[boardIndex].columns[columnIndex].stories[storyIndex].tasks =
+              state[boardIndex].columns[columnIndex].stories[
+                storyIndex
+              ].tasks.filter((task) => task.id !== taskId);
           }
         }
       }
-      localStorage.setItem("boards", JSON.stringify(state));
+      localStorage.setItem('boards', JSON.stringify(state));
     },
 
     editBoardName: (state, action) => {
@@ -169,39 +170,37 @@ export const boardSlice = createSlice({
           }),
         };
       });
-      localStorage.setItem("boards", JSON.stringify(state));
+      localStorage.setItem('boards', JSON.stringify(state));
     },
     moveStory: (state, action) => {
       const { boardId, columnId, storyId } = action.payload;
-    
+
       const boardIndex = state.findIndex((board) => board.id === boardId);
       if (boardIndex === -1) return;
-    
-      const fromColumnIndex = state[boardIndex].columns.findIndex(
-        (column) => column.stories.some((story) => story.id === storyId)
+
+      const fromColumnIndex = state[boardIndex].columns.findIndex((column) =>
+        column.stories.some((story) => story.id === storyId)
       );
       if (fromColumnIndex === -1) return;
-    
-      const storyIndex = state[boardIndex].columns[fromColumnIndex].stories.findIndex(
-        (story) => story.id === storyId
-      );
+
+      const storyIndex = state[boardIndex].columns[
+        fromColumnIndex
+      ].stories.findIndex((story) => story.id === storyId);
       if (storyIndex === -1) return;
-    
-      const [movedStory] = state[boardIndex].columns[fromColumnIndex].stories.splice(
-        storyIndex,
-        1
-      );
-    
+
+      const [movedStory] = state[boardIndex].columns[
+        fromColumnIndex
+      ].stories.splice(storyIndex, 1);
+
       const toColumnIndex = state[boardIndex].columns.findIndex(
         (column) => column.id === columnId
       );
       if (toColumnIndex === -1) return;
-    
+
       state[boardIndex].columns[toColumnIndex].stories.push(movedStory);
-    
-      localStorage.setItem("boards", JSON.stringify(state)); // Update localStorage
+
+      localStorage.setItem('boards', JSON.stringify(state)); // Update localStorage
     },
-    
   },
 });
 
@@ -216,7 +215,7 @@ export const {
   removeTask,
   addStory,
   removeStory,
-  moveStory, 
-  editBoardName
+  moveStory,
+  editBoardName,
 } = boardSlice.actions;
 export default boardSlice.reducer;

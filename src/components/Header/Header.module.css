@@ -11,7 +11,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #202020;
+  background-color: #6083b8;
   border-radius: 0;
   margin-bottom: 0;
 }
@@ -25,4 +25,12 @@
   font-size: 1.3rem;
   font-weight: 300;
   margin-left: 0.5rem;
+}
+
+.logoBox {
+  margin-left: 1rem;
+}
+
+.userBox {
+  margin-right: 1rem;
 }

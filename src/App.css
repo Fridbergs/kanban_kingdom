@@ -178,7 +178,7 @@
 }
 
 .board_menu form > button:disabled {
-  color: red;
+  font-size: 1.4rem;
   opacity: 0.2;
 }
 
@@ -200,16 +200,16 @@ Syns bara när man hoverar över list items i menyn. */
 /* Buttons inside user page */
 
 .user_page_button {
-  background-color: #a0a0a0bc;
+  background-color: #6083b8;
   border: none;
   border-radius: 5px;
-  color: black;
+  color: white;
   padding: 8px;
   transition: all 0.3s;
 }
 
 .user_page_button:hover {
-  background-color: #afafaf;
+  background-color: #335e9f;
   cursor: pointer;
 }
 

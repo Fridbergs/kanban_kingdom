@@ -12,7 +12,7 @@ import "../../App.css";
 const Layout = ({ handleOpenModal }) => {
   // Store the ID of the active board
   const [activeBoardId, setActiveBoardId] = useState("");
-  const [asideIsCollapsed, setAsideIsCollapsed] = useState(false);
+  const [asideIsCollapsed, setAsideIsCollapsed] = useState(true);
   // Input value for new board title
   const [input, setInput] = useState("");
 
@@ -44,7 +44,7 @@ const Layout = ({ handleOpenModal }) => {
     setInput("");
   };
 
-  // function to toggle side bar collapse 
+  // function to toggle side bar collapse
   function handleAsideCollapse() {
     setAsideIsCollapsed((prev) => !prev);
   }
@@ -67,8 +67,9 @@ const Layout = ({ handleOpenModal }) => {
               key={board.id}
             >
               <li
-                className={`${activeBoardId === board.id ? "route_link_active" : undefined
-                  } ${asideIsCollapsed ? "hide" : ""}`}
+                className={`${
+                  activeBoardId === board.id ? "route_link_active" : undefined
+                } ${asideIsCollapsed ? "hide" : ""}`}
               >
                 <span className="active_span">{board.title}</span>
                 {/* <span className="board_list_buttons">×</span> */}

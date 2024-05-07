@@ -77,8 +77,9 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
     <main className={css.board}>
       {/* <div className={css.board_header}> */}
       <div
-        className={`${css.board_header} ${asideIsCollapsed ? "full_width" : ""
-          }`}
+        className={`${css.board_header} ${
+          asideIsCollapsed ? "full_width" : ""
+        }`}
       >
         <div className={css.left_side}>
           <button

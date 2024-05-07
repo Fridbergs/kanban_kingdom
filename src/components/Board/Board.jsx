@@ -1,54 +1,54 @@
-import { useState, useRef, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Column from "../Column/Column";
-import { addColumn, editBoardName } from "../../slices/BoardSlice";
-import css from "./Board.module.css";
-import { useParams } from "react-router-dom";
-import { FaTrello, FaStream } from "react-icons/fa";
-import "./Listview.css";
-import ListPage from "./ListPage";
+import { useState, useRef, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Column from '../Column/Column';
+import { addColumn, editBoardName } from '../../slices/BoardSlice';
+import css from './Board.module.css';
+import { useParams } from 'react-router-dom';
+import { FaTrello, FaStream } from 'react-icons/fa';
+import './Listview.css';
+import ListPage from './ListPage';
 
 const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
   // get the id from the url params
   const { boardId } = useParams();
 
-  // reference input field for board name edit 
+  // reference input field for board name edit
   const focusBoardNameEdit = useRef(null);
 
-  // get boards from redux store 
+  // get boards from redux store
   const boards = useSelector((state) => state.boards);
 
   // Find the board using the parsed boardId as a string
   const board = boards.find((board) => board.id === boardId);
 
-  // useState for column input, list view toggle and edit board name 
-  const [input, setInput] = useState("");
+  // useState for column input, list view toggle and edit board name
+  const [input, setInput] = useState('');
   const [isListview, setIsListview] = useState(false);
   const [isEditingBoardName, setIsEditingBoardName] = useState(false);
 
   // redux dispatch
   const dispatch = useDispatch();
 
-  // function to toggle list view 
+  // function to toggle list view
   const handleListviewClick = (e) => {
     e.preventDefault();
     setIsListview(!isListview);
     console.log(isListview);
   };
 
-  // function to add column 
+  // function to add column
   const handleAddColumn = (e) => {
     e.preventDefault();
     dispatch(addColumn({ title: input, boardId: board.id }));
-    setInput("");
+    setInput('');
   };
 
-  // function to handle board name change 
+  // function to handle board name change
   function handleBoardNameChange(e) {
     dispatch(editBoardName({ boardName: e.target.value, boardId: board.id }));
   }
 
-  // function to handle to toggle board name edit mode 
+  // function to handle to toggle board name edit mode
   function handleToggleBoardNameEdit() {
     setIsEditingBoardName((prev) => !prev);
     if (focusBoardNameEdit.current) {
@@ -56,12 +56,12 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
     }
   }
 
-  // listen to key press for board edit 
+  // listen to key press for board edit
   function handleKeyPress(e) {
-    if (e.key === "Enter") handleToggleBoardNameEdit();
+    if (e.key === 'Enter') handleToggleBoardNameEdit();
   }
 
-  // handle focus on board name edit input 
+  // handle focus on board name edit input
   useEffect(() => {
     if (focusBoardNameEdit.current) {
       focusBoardNameEdit.current.focus();
@@ -70,7 +70,7 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
 
   if (!board) {
     // Handle case when board is not found
-    return <div style={{ padding: "10px 20px 20px 20px" }}>Loading...</div>;
+    return <div style={{ padding: '10px 20px 20px 20px' }}>Loading...</div>;
   }
 
   return (
@@ -78,19 +78,19 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
       {/* <div className={css.board_header}> */}
       <div
         className={`${css.board_header} ${
-          asideIsCollapsed ? "full_width" : ""
+          asideIsCollapsed ? 'full_width' : ''
         }`}
       >
         <div className={css.left_side}>
           <button
-            className="collapse_button no_margin"
+            className='collapse_button no_margin'
             onClick={toggleCollapse}
           >
-            {asideIsCollapsed ? ">" : "<"}
+            {asideIsCollapsed ? '>' : '<'}
           </button>
           {isEditingBoardName ? (
             <input
-              type="text"
+              type='text'
               className={css.boardname_edit_input}
               onChange={handleBoardNameChange}
               onKeyDown={handleKeyPress}
@@ -103,26 +103,26 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
         </div>
         <form onSubmit={handleAddColumn}>
           <input
-            type="text"
-            id="columnTitle"
-            placeholder="Add a Column..."
+            type='text'
+            id='columnTitle'
+            placeholder='Add a Column...'
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
-          <button type="submit" disabled={input.length < 5}>
-            {" "}
-            +{" "}
+          <button type='submit' disabled={input.length < 5}>
+            {' '}
+            +{' '}
           </button>
         </form>
         <button
-          className="listBtn"
+          className='listBtn'
           onClick={handleListviewClick}
-          style={{ color: "blue", marginLeft: "2rem" }}
+          style={{ color: 'blue', marginLeft: '2rem' }}
         >
           {!isListview ? (
-            <FaTrello style={{ color: "blue" }} />
+            <FaTrello style={{ color: 'blue' }} />
           ) : (
-            <FaStream style={{ color: "blue" }} />
+            <FaStream style={{ color: 'blue' }} />
           )}
         </button>
       </div>

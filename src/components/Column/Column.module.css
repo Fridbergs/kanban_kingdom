@@ -53,7 +53,7 @@ h3 {
   font-size: 0.8rem;
 }
 
-.column>form {
+.column > form {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,12 +69,12 @@ h3 {
   min-height: 45px;
 }
 
-.column>form>input {
+.column > form > input {
   margin: 0 5px 0 0;
   width: 100%;
 }
 
-.column>form>button {
+.column > form > button {
   padding: 1px 5px;
   color: white;
   background-color: transparent;
@@ -84,7 +84,7 @@ h3 {
   border-radius: 2px;
 }
 
-.column>form>button:disabled {
+.column > form > button:disabled {
   color: red;
   opacity: 0.2;
 }

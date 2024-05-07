@@ -43,7 +43,7 @@ const Layout = ({ handleOpenModal }) => {
     if (!input.trim()) return;
     dispatch(addBoard(input));
     // Reset input field
-    setInput('');
+    setInput("");
   };
 
   // function to delete board
@@ -76,9 +76,8 @@ const Layout = ({ handleOpenModal }) => {
               key={board.id}
             >
               <li
-                className={`${
-                  activeBoardId === board.id ? 'route_link_active' : undefined
-                } ${asideIsCollapsed ? 'hide' : ''}`}
+                className={`${activeBoardId === board.id ? "route_link_active" : undefined
+                  } ${asideIsCollapsed ? "hide" : ""}`}
               >
                 <span className='active_span'>{board.title}</span>
                 <span className='board_list_buttons'>
@@ -100,9 +99,9 @@ const Layout = ({ handleOpenModal }) => {
             maxLength='17'
             onChange={(e) => setInput(e.target.value)}
           />
-          <button type='submit' disabled={input.length < 2}>
-            {' '}
-            +{' '}
+          <button type="submit" disabled={!input.length}>
+            {" "}
+            +{" "}
           </button>
         </form>
       </aside>

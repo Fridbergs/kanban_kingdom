@@ -24,7 +24,7 @@ const Story = ({ tasks, story, column, board, handleOpenModal, columns }) => {
       //if story is found in a column === columnId
       if (column.stories.find((s) => s.id === storyId)) {
         // Set the foundColumnId
-        foundColumnId = column.id; 
+        foundColumnId = column.id;
       }
     });
     columnId = foundColumnId;
@@ -42,7 +42,7 @@ const Story = ({ tasks, story, column, board, handleOpenModal, columns }) => {
     }),
   }));
 
-// function for adding a task to a story
+  // function for adding a task to a story
   const handleAddTask = (e) => {
     e.preventDefault();
     dispatch(addTask({ title: input, columnId, boardId, storyId }));
@@ -73,7 +73,7 @@ const Story = ({ tasks, story, column, board, handleOpenModal, columns }) => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <button type="submit" disabled={input.length < 5}>
+        <button type="submit" disabled={!input.length}>
           +
         </button>
       </form>

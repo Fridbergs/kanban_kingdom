@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Column from '../Column/Column';
-import { addColumn, editBoardName } from '../../slices/BoardSlice';
+import { addColumn, editBoardName, removeColumn } from '../../slices/BoardSlice';
 import css from './Board.module.css';
 import { useParams } from 'react-router-dom';
 import { FaTrello, FaStream } from 'react-icons/fa';
@@ -45,6 +45,14 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
     setInput('');
   };
 
+  // function to Delete column
+  const handleDeleteColumn = (column) => {
+    console.log('DELETE COLUMN: ', column.title)
+    
+    dispatch(removeColumn({boardId: boardId, columnId: column.id}));
+   
+  };
+
   // function to handle board name change
   function handleBoardNameChange(e) {
     dispatch(editBoardName({ boardName: e.target.value, boardId: board.id }));
@@ -79,10 +87,9 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
     <main className={css.board}>
       {/* <div className={css.board_header}> */}
       <div
-
-        className={`${css.board_header} ${asideIsCollapsed ? "full_width" : ""
-          }`}
-
+        className={`${css.board_header} ${
+          asideIsCollapsed ? 'full_width' : ''
+        }`}
       >
         <div className={css.left_side}>
           <button
@@ -112,9 +119,9 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
-          <button type="submit" disabled={!input.length}>
-            {" "}
-            +{" "}
+          <button type='submit' disabled={!input.length}>
+            {' '}
+            +{' '}
           </button>
         </form>
         <button
@@ -135,6 +142,7 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
           {board.columns.map((column) => (
             <Column
               handleOpenModal={handleOpenModal}
+              onDelete={()=> handleDeleteColumn(column)}
               key={column.id}
               stories={column.stories}
               board={board}

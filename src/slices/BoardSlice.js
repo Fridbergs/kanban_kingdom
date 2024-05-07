@@ -42,11 +42,22 @@ export const boardSlice = createSlice({
       }
       localStorage.setItem('boards', JSON.stringify(state)); // Update localStorage
     },
+
     removeColumn: (state, action) => {
-      state.columns = state.columns.filter(
-        (column) => column.id !== action.payload
-      );
-      localStorage.setItem('boards', JSON.stringify(state));
+      // Hämta boardId och columnId från åtgärdens payload
+      const { boardId, columnId } = action.payload;
+      // Hitta index för board baserat på boardId
+      const boardIndex = state.findIndex((board) => board.id === boardId);
+      // Kontrollera om boarden finns
+      if (boardIndex !== -1) {
+        // Filtrera kolumnen från boarden
+        state[boardIndex].columns = state[boardIndex].columns.filter(
+          // Jämför kolumnens id med den angivna columnId för att filtrera bort den
+          (column) => column.id !== columnId
+        );
+        // Uppdatera localStorage med den uppdaterade Redux-state
+        localStorage.setItem('boards', JSON.stringify(state));
+      }
     },
 
     addStory: (state, action) => {

@@ -4,8 +4,9 @@ import { useDispatch } from "react-redux";
 import { addStory, moveStory } from "../../slices/BoardSlice";
 import { useDrop } from "react-dnd";
 import css from "./Column.module.css";
+import DeleteButton from "../DeleteButton";
 
-const Column = ({ stories, column, board, handleOpenModal, }) => {
+const Column = ({ stories, column, board, handleOpenModal, onDelete }) => {
   const columnRef = useRef(column);
   const boardId = board.id;
 
@@ -43,6 +44,9 @@ const Column = ({ stories, column, board, handleOpenModal, }) => {
       {/* En form som lägger till stories */}
       <div className={css.column_header}>
         <h3 className={css.column_title}>{column.title}</h3>
+        <div className={css.delete_button}>
+          <DeleteButton onClick={onDelete} />
+        </div>
       </div>
       <div className={css.column_content}>
         {stories.map((story) => (

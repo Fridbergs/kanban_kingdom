@@ -1,6 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+/* font: Bangers */
+
+.bangers {
+  font-family: "Bangers";
+}
+
 .header {
   width: 100%;
-  height: 50px;
+  height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,7 +18,7 @@
 
 .logo {
   margin-top: 2px;
-  height: 46px;
+  height: 92px;
 }
 
 .h1 {

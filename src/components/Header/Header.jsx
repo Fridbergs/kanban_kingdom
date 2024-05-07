@@ -4,17 +4,17 @@ import NavBar from "../NavBar/NavBar";
 import UserSelector from "../UserSelector/UserSelector";
 import { Link } from "react-router-dom";
 import css from "./Header.module.css";
-
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/spiderking.png";
 
 const Header = () => {
   const selectedUser = useSelector(
     (state) => state.users.find((user) => user.selectedUser)
-    // showing the user that is the selected user 
+    // showing the user that is the selected user
   );
 
   return (
     <header className={css.header}>
+      {/* <p className="bangers">hej1</p> */}
       <NavBar />
       <Link to={"/"} className="route_link">
         {" "}
@@ -23,11 +23,8 @@ const Header = () => {
           src={logo}
           alt="Kanban Kingdom - Malmö Marvels"
         />
-        {/* <h1 className={css.h1}>KANBAN KINGDOM</h1> */}
       </Link>
-
-      <p>Inloggad som: {}</p>
-
+      <p>Logged in as: {}</p>
       <UserSelector />
     </header>
   );

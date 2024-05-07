@@ -14,7 +14,7 @@ const Column = ({ stories, column, board, handleOpenModal, }) => {
     dispatch(moveStory({ storyId, columnId, boardId }));
     // console.log("Dropped into column:", columnRef.current.title);
   };
-  
+
   // drop stories in right target 
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "story",
@@ -64,7 +64,7 @@ const Column = ({ stories, column, board, handleOpenModal, }) => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <button type="submit" disabled={input.length < 5}>
+        <button type="submit" disabled={!input.length}>
           +
         </button>
       </form>

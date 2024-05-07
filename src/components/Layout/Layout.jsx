@@ -32,23 +32,23 @@ const Layout = ({ handleOpenModal }) => {
 
   // Set the ID of the active board
   const handleActiveBoard = (id) => {
-    setActiveBoardId(id); 
+    setActiveBoardId(id);
   };
 
   const handleAddBoard = (e) => {
     e.preventDefault();
     // Prevent adding empty board titles
-    if (!input.trim()) return; 
+    if (!input.trim()) return;
     dispatch(addBoard(input));
     // Reset input field
-    setInput(""); 
+    setInput("");
   };
 
   // function to toggle side bar collapse 
   function handleAsideCollapse() {
     setAsideIsCollapsed((prev) => !prev);
   }
-  
+
   // Get boards from Redux state
   const boards = useSelector((state) => state.boards);
   // const board = boards.find((board) => board.id === activeBoardId);
@@ -67,9 +67,8 @@ const Layout = ({ handleOpenModal }) => {
               key={board.id}
             >
               <li
-                className={`${
-                  activeBoardId === board.id ? "route_link_active" : undefined
-                } ${asideIsCollapsed ? "hide" : ""}`}
+                className={`${activeBoardId === board.id ? "route_link_active" : undefined
+                  } ${asideIsCollapsed ? "hide" : ""}`}
               >
                 <span className="active_span">{board.title}</span>
                 {/* <span className="board_list_buttons">×</span> */}
@@ -89,7 +88,7 @@ const Layout = ({ handleOpenModal }) => {
             maxLength="17"
             onChange={(e) => setInput(e.target.value)}
           />
-          <button type="submit" disabled={input.length < 2}>
+          <button type="submit" disabled={!input.length}>
             {" "}
             +{" "}
           </button>

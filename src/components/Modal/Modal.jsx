@@ -61,19 +61,19 @@ const Modal = ({ task, onClose, ids }) => {
     { label: "Fuck Ups", value: "Fuck Ups" },
   ];
 
-  // function to set or change ownership 
+  // function to set or change ownership
   const handleUserOwnershipChange = (selectedOptions) => {
     const selectedUsers = selectedOptions.map((option) => option.value);
     setUserOwnership(selectedUsers);
   };
 
-  // function to set or change categories 
+  // function to set or change categories
   const handleCategoryChange = (selectedOptions) => {
     const selectedCategories = selectedOptions.map((option) => option.value);
     setCategories(selectedCategories);
   };
 
-  // function to update all parts of story 
+  // function to update all parts of story
   const handleChange = (e) => {
     const { name, value, type, checked, options } = e.target;
     // Update the corresponding local state based on the input name
@@ -140,7 +140,7 @@ const Modal = ({ task, onClose, ids }) => {
     onClose();
   };
 
-  // function to delete task  
+  // function to delete task
   const handleDeleteTask = () => {
     dispatch(removeTask({ boardId, columnId, storyId, taskId: task.id }));
     onClose();
@@ -150,10 +150,7 @@ const Modal = ({ task, onClose, ids }) => {
     <div className={css["modal-overlay"]} onClick={onClose}>
       <div className={css.modal} onClick={(e) => e.stopPropagation()}>
         <div className={css["modal-header"]}>
-          <button onClick={onClose}>
-            <FaTimes />
-          </button>
-          <label htmlFor="title">Title</label>
+          <label htmlFor="title"></label>
           <input
             type="text"
             id="title"
@@ -162,15 +159,19 @@ const Modal = ({ task, onClose, ids }) => {
             onChange={handleChange}
             placeholder="Title"
           />
+          <button onClick={onClose}>
+            <FaTimes />
+          </button>
         </div>
         <div className={css["modal-content"]}>
-          <label htmlFor="content">Content</label>
+          <label htmlFor="content">Description</label>
           <textarea
             id="content"
             name="content"
             value={content}
+            style={{ height: "150px" }}
             onChange={handleChange}
-            placeholder="Content"
+            placeholder="Describe your task here.."
           />
           <label htmlFor="category">
             {" "}
@@ -184,6 +185,12 @@ const Modal = ({ task, onClose, ids }) => {
               value: category,
             }))}
             onChange={handleCategoryChange}
+            styles={{
+              option: (provided) => ({
+                ...provided,
+                color: "black",
+              }),
+            }}
           />
           <label htmlFor="deadLine">
             {" "}
@@ -232,14 +239,20 @@ const Modal = ({ task, onClose, ids }) => {
             isMulti
             value={userOwnership.map((user) => ({ label: user, value: user }))}
             onChange={handleUserOwnershipChange}
+            styles={{
+              option: (provided) => ({
+                ...provided,
+                color: "black",
+              }),
+            }}
           />
         </div>
         <div className={css["modal-footer"]}>
-          <button className={css["delete-task"]} onClick={handleDeleteTask}>
-            <FaTrashAlt />
+          <button className={css.saveButton} onClick={handleEditTask}>
+            Save Task
           </button>
-          <button style={{ marginLeft: "1rem" }} onClick={handleEditTask}>
-            <FaSave />
+          <button className={css.deleteButton} onClick={handleDeleteTask}>
+            Delete Task
           </button>
         </div>
       </div>

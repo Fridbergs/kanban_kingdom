@@ -1,17 +1,25 @@
 .nav_list {
   list-style: none;
   display: flex;
+  align-items: center;
   gap: 1rem;
   font-size: 0.8rem;
-  margin-left: 10px;
   text-transform: uppercase;
 }
 
 .nav_list li {
-  transition: color 0.3s;
+  transition: color 0.3s, background-color 0.3s;
+  padding: 0.5rem;
+  border-radius: 5px;
 }
 
 .nav_list li:hover {
   color: #505050;
   cursor: pointer;
+  background-color: #335e9f;
+}
+
+.logo {
+  margin-top: 12px;
+  height: 92px;
 }

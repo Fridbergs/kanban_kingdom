@@ -6,4 +6,9 @@
   height: fit-content;
   background-color: #202020ec;
   backdrop-filter: blur(3px);
+  text-align: center;
+}
+
+.socials {
+  font-size: 1.5rem;
 }

@@ -2,9 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import NavBar from "../NavBar/NavBar";
 import UserSelector from "../UserSelector/UserSelector";
-import { Link } from "react-router-dom";
 import css from "./Header.module.css";
-import logo from "../../assets/images/spiderking.png";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const selectedUser = useSelector(
@@ -14,18 +13,19 @@ const Header = () => {
 
   return (
     <header className={css.header}>
-      {/* <p className="bangers">hej1</p> */}
+      <div className={css.logoBox}>
+        <Link to={"/"} className="route_link">
+          {" "}
+          <p>
+            KANBAN KINGDOM <br /> MALMÖ MARVELS
+          </p>
+        </Link>
+      </div>
       <NavBar />
-      <Link to={"/"} className="route_link">
-        {" "}
-        <img
-          className={css.logo}
-          src={logo}
-          alt="Kanban Kingdom - Malmö Marvels"
-        />
-      </Link>
-      <p>Logged in as: {}</p>
-      <UserSelector />
+      <div className={css.userBox}>
+        <p>Logged in as: {}</p>
+        <UserSelector />
+      </div>
     </header>
   );
 };

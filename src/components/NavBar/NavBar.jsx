@@ -11,6 +11,7 @@ const NavBar = () => {
             to="/"
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
+              fontFamily: "Bangers"
             })}
           >
             Home
@@ -21,6 +22,7 @@ const NavBar = () => {
             to="/info"
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
+              fontFamily: "Bangers"
             })}
           >
             Info
@@ -41,6 +43,7 @@ const NavBar = () => {
             to="/settings"
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
+              fontFamily: "Bangers"
             })}
           >
             Settings
@@ -51,6 +54,7 @@ const NavBar = () => {
             to="/users"
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
+              fontFamily: "Bangers"
             })}
           >
             Users

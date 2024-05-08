@@ -10,7 +10,7 @@ const Welcome = ({ toggleCollapse, asideIsCollapsed }) => {
         {asideIsCollapsed ? ">" : "<"}
       </button>
       <div className={css.welcome_container}>
-        <h1>Welcome to Kanban Kingdom!!</h1>
+        <h1 style={{fontFamily: "Bangers", fontSize: "3rem", margin: "1.2rem", letterSpacing: "0.1rem"}}>Welcome to Kanban Kingdom!</h1>
         <p>This is the landing page of your kanban application.</p>
         <p> ⬅️ Select or create a new Board to start your project!</p>
         <br />

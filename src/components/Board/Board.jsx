@@ -1,16 +1,22 @@
-import { useState, useRef, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Column from '../Column/Column';
+
+import { useState, useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Column from "../Column/Column";
+
 import {
   addColumn,
   editBoardName,
   removeColumn,
-} from '../../slices/BoardSlice';
-import css from './Board.module.css';
-import { useParams } from 'react-router-dom';
-import { FaTrello, FaStream } from 'react-icons/fa';
-import './Listview.css';
-import ListPage from './ListPage';
+
+} from "../../slices/BoardSlice";
+import css from "./Board.module.css";
+import { useParams } from "react-router-dom";
+import { FaTrello, FaStream } from "react-icons/fa";
+import "./Listview.css";
+import ListPage from "./ListPage";
+import Crown from "./Crown";
+import Crown2 from "./Crown2";
+
 
 const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
   // get the id from the url params
@@ -46,12 +52,14 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
   const handleAddColumn = (e) => {
     e.preventDefault();
     dispatch(addColumn({ title: input, boardId: board.id }));
-    setInput('');
+    setInput("");
   };
 
   // function to Delete column
   const handleDeleteColumn = (column) => {
-    console.log('DELETE COLUMN: ', column.title);
+
+    console.log("DELETE COLUMN: ", column.title);
+
 
     dispatch(removeColumn({ boardId: boardId, columnId: column.id }));
   };
@@ -71,7 +79,7 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
 
   // listen to key press for board edit
   function handleKeyPress(e) {
-    if (e.key === 'Enter') handleToggleBoardNameEdit();
+    if (e.key === "Enter") handleToggleBoardNameEdit();
   }
 
   // handle focus on board name edit input
@@ -83,7 +91,7 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
 
   if (!board) {
     // Handle case when board is not found
-    return <div style={{ padding: '10px 20px 20px 20px' }}>Loading...</div>;
+    return <div style={{ padding: "10px 20px 20px 20px" }}>Loading...</div>;
   }
 
   return (
@@ -96,14 +104,14 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
       >
         <div className={css.left_side}>
           <button
-            className='collapse_button no_margin'
+            className="collapse_button no_margin"
             onClick={toggleCollapse}
           >
-            {asideIsCollapsed ? '>' : '<'}
+            {asideIsCollapsed ? <Crown /> : <Crown2 />}
           </button>
-          {isEditingBoardName ? (
+          {isEditingBoardName ? ( 
             <input
-              type='text'
+              type="text"
               className={css.boardname_edit_input}
               onChange={handleBoardNameChange}
               onKeyDown={handleKeyPress}
@@ -116,26 +124,26 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
         </div>
         <form onSubmit={handleAddColumn}>
           <input
-            type='text'
-            id='columnTitle'
-            placeholder='Add a Column...'
+            type="text"
+            id="columnTitle"
+            placeholder="Add a column.."
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
-          <button type='submit' disabled={!input.length}>
-            {' '}
-            +{' '}
+          <button type="submit" disabled={!input.length}>
+            {" "}
+            +{" "}
           </button>
         </form>
         <button
-          className='listBtn'
+          className="listBtn"
           onClick={handleListviewClick}
-          style={{ color: 'blue', marginLeft: '2rem' }}
+          // style={{ color: "blue", marginLeft: "2rem" }}
         >
           {!isListview ? (
-            <FaTrello style={{ color: 'blue' }} />
+            <FaTrello style={{ color: "red" }} />
           ) : (
-            <FaStream style={{ color: 'blue' }} />
+            <FaStream style={{ color: "blue" }} />
           )}
         </button>
       </div>

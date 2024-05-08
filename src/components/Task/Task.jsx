@@ -11,7 +11,7 @@ const Task = ({ task, handleOpenModal, boardId, columnId, storyId }) => {
 	};
 
 	// Hämta användarna från LocalStorage
-	const users = JSON.parse(localStorage.getItem('users'));
+	const users = JSON.parse(localStorage.getItem('users')) || [];
 
 	console.log(users);
 
@@ -57,7 +57,7 @@ const Task = ({ task, handleOpenModal, boardId, columnId, storyId }) => {
 													marginRight: '0.5rem',
 												}}
 											/>
-											<p style={{ width: '32px', overflow: 'hidden' }}>
+											<p style={{ width: '32px', overflow: 'hidden', color: "yellow" }}>
 												{user.name}
 											</p>
 										</span>

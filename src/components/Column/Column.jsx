@@ -76,9 +76,10 @@ const Column = ({
       </div>
       <form onSubmit={handleAddStory}>
         <input
-          type='text'
-          id='storyTitle'
-          placeholder='Add a Story...'
+          type="text"
+          id="storyTitle"
+          placeholder="Add a story.."
+
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />

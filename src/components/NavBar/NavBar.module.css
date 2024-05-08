@@ -14,9 +14,8 @@
 }
 
 .nav_list li:hover {
-  color: #505050;
   cursor: pointer;
-  background-color: #335e9f;
+  opacity: 50%;
 }
 
 .logo {

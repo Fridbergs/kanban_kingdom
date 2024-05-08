@@ -117,3 +117,12 @@ input:focus + button {
 .boardname_edit_input:focus {
   background-color: transparent;
 }
+
+button svg:hover {
+  fill: rgb(237, 181, 27);
+  cursor: pointer;
+}
+
+::placeholder {
+  color: rgb(221, 216, 216);
+}

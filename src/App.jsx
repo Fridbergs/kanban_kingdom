@@ -29,7 +29,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className="bgPic">
       <DndProvider backend={HTML5Backend}>
         <Header />
         {isModalOpen && (
@@ -37,7 +37,7 @@ function App() {
         )}
         <Layout handleOpenModal={handleOpenModal} />
       </DndProvider>
-    </>
+    </div>
   );
 }
 

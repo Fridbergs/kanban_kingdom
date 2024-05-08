@@ -10,8 +10,9 @@ const NavBar = () => {
           <NavLink
             to="/"
             style={({ isActive }) => ({
-              textDecoration: isActive ? "underline" : "none",
-              fontFamily: "Bangers"
+              color: isActive ? "#ebe860" : "#FFF",
+              textDecoration: "none",
+              fontFamily: "Bangers",
             })}
           >
             Home
@@ -21,7 +22,8 @@ const NavBar = () => {
           <NavLink
             to="/info"
             style={({ isActive }) => ({
-              textDecoration: isActive ? "underline" : "none",
+              color: isActive ? "#ebe860" : "#FFF",
+              textDecoration: "none",
               fontFamily: "Bangers"
             })}
           >
@@ -42,7 +44,8 @@ const NavBar = () => {
           <NavLink
             to="/settings"
             style={({ isActive }) => ({
-              textDecoration: isActive ? "underline" : "none",
+              color: isActive ? "#ebe860" : "#FFF",
+              textDecoration: "none",
               fontFamily: "Bangers"
             })}
           >
@@ -53,7 +56,8 @@ const NavBar = () => {
           <NavLink
             to="/users"
             style={({ isActive }) => ({
-              textDecoration: isActive ? "underline" : "none",
+              color: isActive ? "#ebe860" : "#FFF",
+              textDecoration:  "none",
               fontFamily: "Bangers"
             })}
           >

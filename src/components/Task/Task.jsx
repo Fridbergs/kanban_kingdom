@@ -13,7 +13,7 @@ const Task = ({ task, handleOpenModal, boardId, columnId, storyId }) => {
 	// Hämta användarna från LocalStorage
 	const users = JSON.parse(localStorage.getItem('users')) || [];
 
-	console.log(users);
+	// console.log(users);
 
 	return (
 		<>

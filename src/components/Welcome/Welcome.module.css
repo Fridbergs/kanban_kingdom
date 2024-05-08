@@ -12,3 +12,11 @@
 .socials {
   font-size: 1.5rem;
 }
+
+.socials svg {
+  fill: rgba(246, 211, 55, 0.8);
+}
+
+.socials svg:hover {
+  fill: rgba(205, 141, 22, 0.866);
+}

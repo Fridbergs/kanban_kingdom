@@ -1,7 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Column from '../Column/Column';
-import { addColumn, editBoardName, removeColumn } from '../../slices/BoardSlice';
+import {
+  addColumn,
+  editBoardName,
+  removeColumn,
+} from '../../slices/BoardSlice';
 import css from './Board.module.css';
 import { useParams } from 'react-router-dom';
 import { FaTrello, FaStream } from 'react-icons/fa';
@@ -23,7 +27,7 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
 
   // useState for column input, list view toggle and edit board name
 
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
 
   const [isListview, setIsListview] = useState(false);
   const [isEditingBoardName, setIsEditingBoardName] = useState(false);
@@ -47,10 +51,9 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
 
   // function to Delete column
   const handleDeleteColumn = (column) => {
-    console.log('DELETE COLUMN: ', column.title)
-    
-    dispatch(removeColumn({boardId: boardId, columnId: column.id}));
-   
+    console.log('DELETE COLUMN: ', column.title);
+
+    dispatch(removeColumn({ boardId: boardId, columnId: column.id }));
   };
 
   // function to handle board name change
@@ -88,7 +91,7 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
       {/* <div className={css.board_header}> */}
       <div
         className={`${css.board_header} ${
-          asideIsCollapsed ? "full_width" : ""
+          asideIsCollapsed ? 'full_width' : ''
         }`}
       >
         <div className={css.left_side}>
@@ -142,7 +145,7 @@ const Board = ({ handleOpenModal, toggleCollapse, asideIsCollapsed }) => {
           {board.columns.map((column) => (
             <Column
               handleOpenModal={handleOpenModal}
-              onDelete={()=> handleDeleteColumn(column)}
+              onDeleteColumn={() => handleDeleteColumn(column)}
               key={column.id}
               stories={column.stories}
               board={board}

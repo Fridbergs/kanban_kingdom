@@ -83,12 +83,31 @@ export const boardSlice = createSlice({
         localStorage.setItem('boards', JSON.stringify(state)); // Update localStorage
       }
     },
+
     removeStory: (state, action) => {
-      state.columns.stories = state.columns.stories.filter(
-        (story) => story.id !== action.payload
+      const { columnId, storyId } = action.payload;
+      // Hitta index för board baserat på boardId
+      const boardIndex = state.findIndex((board) =>
+        board.columns.some((column) => column.id === columnId)
       );
-      localStorage.setItem('boards', JSON.stringify(state));
+      if (boardIndex !== -1) {
+        // Hitta index för kolumnen baserat på columnId inom den hittade boarden
+        const columnIndex = state[boardIndex].columns.findIndex(
+          (column) => column.id === columnId
+        );
+        if (columnIndex !== -1) {
+          // Filtrera bort storyn från den hittade kolumnen
+          state[boardIndex].columns[columnIndex].stories = state[
+            boardIndex
+          ].columns[columnIndex].stories.filter(
+            (story) => story.id !== storyId
+          );
+          // Uppdatera localStorage med den uppdaterade Redux-state
+          localStorage.setItem('boards', JSON.stringify(state));
+        }
+      }
     },
+
     addTask: (state, action) => {
       const { title, columnId, boardId, storyId } = action.payload;
       const boardIndex = state.findIndex((board) => board.id === boardId);

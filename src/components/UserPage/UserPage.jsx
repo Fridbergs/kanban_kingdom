@@ -3,6 +3,8 @@ import css from "./UserPage.module.css";
 import { useSelector } from "react-redux";
 import UserList from "./UserList";
 import AddUserForm from "./AddUserForm";
+import Crown from "../Board/Crown";
+import Crown2 from "../Board/Crown2";
 
 const UserPage = ({ toggleCollapse, asideIsCollapsed }) => {
   const users = useSelector((state) => state.users);
@@ -10,7 +12,7 @@ const UserPage = ({ toggleCollapse, asideIsCollapsed }) => {
   return (
     <>
       <button className="collapse_button" onClick={toggleCollapse}>
-        {asideIsCollapsed ? ">" : "<"}
+      {asideIsCollapsed ? <Crown /> : <Crown2 />}
       </button>
       <main className={css.main}>
         <UserList users={users} />

@@ -23,6 +23,7 @@ export const userSlice = createSlice({
 				'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkgPaz89D5X6buDwdzpBw6CKBxTICkawsI5TBQ6dhpCA&s',
 				'https://t3.ftcdn.net/jpg/05/91/58/36/360_F_591583639_JaAqX4y6rORJshkPtctq5weTeNQ92js6.jpg',
 				'https://img.freepik.com/premium-vector/cute-alpaca-cartoon-style_846317-65.jpg',
+				'https://static.vecteezy.com/ti/gratis-vektor/p3/3777941-pingvin-tecknad-ga-sota-djur-illustration-vector.jpg',
 			];
 			const randomIndex = Math.floor(Math.random() * defaultPhotos.length);
 			const randomPhoto = defaultPhotos[randomIndex];

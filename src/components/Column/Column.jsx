@@ -64,7 +64,7 @@ const Column = ({ stories, column, board, handleOpenModal, onDelete }) => {
         <input
           type="text"
           id="storyTitle"
-          placeholder="Add a Story..."
+          placeholder="Add a story.."
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />

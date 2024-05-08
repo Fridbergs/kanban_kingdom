@@ -1,11 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
   color: rgb(224, 224, 224);
   scrollbar-width: thin;
   scrollbar-color: #fff6 #00000026;
@@ -24,7 +26,12 @@
   /* Hela höjden minus headerns höjd*/
   max-height: calc(100vh - 50px);
   min-height: calc(100vh - 50px);
-  background-image: url("./assets/kingdom.jpg");
+  /* background-image: url("./assets/images/city_bg.png"); */
+  /* background-size: cover; */
+}
+
+.bgPic {
+  background-image: url("./assets/images/city_bg.png");
   background-size: cover;
 }
 
@@ -37,6 +44,7 @@
   height: calc(100vh - 50px);
   background-color: transparent;
   padding-top: 54px;
+  color: #e79664
 }
 
 /* Container som håller menyn till vänster */
@@ -112,9 +120,6 @@
   margin-top: 0;
 }
 
-.collapse_button:hover {
-  color: #6bb3f9;
-}
 
 .route_link {
   text-decoration: none;
@@ -122,15 +127,17 @@
 
 .route_link_active {
   text-decoration: none;
+  color: #e29667;
 }
 
 .active_span {
   transition: all 0.5s;
+  color: #d67233;
 }
 
 .route_link_active > span {
   margin-left: 5px;
-  color: #6bb3f9;
+  color: #f1b58f;
 }
 
 .board_menu ul li:hover {
@@ -200,7 +207,7 @@ Syns bara när man hoverar över list items i menyn. */
 /* Buttons inside user page */
 
 .user_page_button {
-  background-color: #6083b8;
+  background-color: #ecb337;
   border: none;
   border-radius: 5px;
   color: white;
@@ -209,7 +216,7 @@ Syns bara när man hoverar över list items i menyn. */
 }
 
 .user_page_button:hover {
-  background-color: #335e9f;
+  background-color: #9f6d33;
   cursor: pointer;
 }
 

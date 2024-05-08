@@ -1,12 +1,21 @@
-import Task from "../Task/Task";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addTask } from "../../slices/BoardSlice";
-import { useDrag } from "react-dnd";
-import css from "./Story.module.css";
+import Task from '../Task/Task';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addTask } from '../../slices/BoardSlice';
+import { useDrag } from 'react-dnd';
+import css from './Story.module.css';
+import DeleteButton from '../DeleteButton';
 
-const Story = ({ tasks, story, column, board, handleOpenModal, columns }) => {
-  const [input, setInput] = useState("");
+const Story = ({
+  tasks,
+  story,
+  column,
+  board,
+  handleOpenModal,
+  columns,
+  onDeleteStory,
+}) => {
+  const [input, setInput] = useState('');
   const dispatch = useDispatch();
 
   let columnId = null;
@@ -33,9 +42,9 @@ const Story = ({ tasks, story, column, board, handleOpenModal, columns }) => {
   const boardId = board.id;
   const storyId = story.id;
 
-  // function to drag story 
+  // function to drag story
   const [{ isDragging }, drag] = useDrag(() => ({
-    type: "story",
+    type: 'story',
     item: { id: story.id },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
@@ -46,13 +55,15 @@ const Story = ({ tasks, story, column, board, handleOpenModal, columns }) => {
   const handleAddTask = (e) => {
     e.preventDefault();
     dispatch(addTask({ title: input, columnId, boardId, storyId }));
-    setInput("");
+    setInput('');
   };
 
   return (
-
-    <article className={css.story} ref={drag} >
+    <article className={css.story} ref={drag}>
       <h4>{story.title}</h4>
+      <div className={css.delete_button}>
+        <DeleteButton onClick={onDeleteStory} />
+      </div>
       <div className={css.task_div}>
         {tasks.map((task) => (
           <Task
@@ -67,13 +78,13 @@ const Story = ({ tasks, story, column, board, handleOpenModal, columns }) => {
       </div>
       <form onSubmit={handleAddTask}>
         <input
-          type="text"
-          id="taskTitle"
-          placeholder="Add a task..."
+          type='text'
+          id='taskTitle'
+          placeholder='Add a task...'
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <button type="submit" disabled={!input.length}>
+        <button type='submit' disabled={!input.length}>
           +
         </button>
       </form>

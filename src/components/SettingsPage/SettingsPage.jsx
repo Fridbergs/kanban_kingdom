@@ -1,11 +1,13 @@
 import React from "react";
 import css from "./SettingsPage.module.css";
+import Crown from "../Board/Crown";
+import Crown2 from "../Board/Crown2";
 
 const SettingsPage = ({ toggleCollapse, asideIsCollapsed }) => {
   return (
     <>
       <button className="collapse_button" onClick={toggleCollapse}>
-        {asideIsCollapsed ? ">" : "<"}
+      {asideIsCollapsed ? <Crown /> : <Crown2 />}
       </button>
       <main className={css.settings_container}>SettingsPage</main>
     </>

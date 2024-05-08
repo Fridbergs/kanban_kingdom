@@ -16,7 +16,7 @@ const Header = () => {
       <div className={css.logoBox}>
         <Link to={"/"} className="route_link">
           {" "}
-          <p>
+          <p style={{fontFamily: "Bangers"}}>
             KANBAN KINGDOM <br /> MALMÖ MARVELS
           </p>
         </Link>

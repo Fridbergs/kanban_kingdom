@@ -24,16 +24,16 @@ const Task = ({ task, handleOpenModal, boardId, columnId, storyId }) => {
 					padding: '5px',
 					border:
 						(task.isCompleted && 'rgb(112, 255, 117) solid 2px') ||
-						(task.isUrgent && 'rgb(255, 255, 102) solid 2px'),
+						(task.isUrgent && 'orange solid 2px'),
 				}}
 			>
 				<div className="taskheader">
 					<h5>{task.title}</h5>
-					<hr />
+					{/* <hr/> */}
 				</div>
 				{task.dueDate && (
 					<p
-						style={{ fontSize: '0.6rem', color: 'white', paddingTop: '0.5em' }}
+						style={{ fontSize: '0.6rem', color: '#c46210', paddingTop: '0.5em' }}
 					>
 						Do date: {task.dueDate}
 					</p>

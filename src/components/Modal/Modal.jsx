@@ -34,6 +34,10 @@ const Modal = ({ task, onClose, ids }) => {
 	const [userOwnership, setUserOwnership] = useState(task.userOwnership);
 	const [users, setUsers] = useState([]);
 
+	//hämtar users från local storage
+	const usersFromLocalStorage = JSON.parse(localStorage.getItem("users")) || []
+	// console.log(usersFromLocalStorage)
+
 	useEffect(() => {
 		// Retrieve users from localStorage
 		const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
@@ -237,7 +241,17 @@ const Modal = ({ task, onClose, ids }) => {
 					<Select
 						options={users}
 						isMulti
-						value={userOwnership.map((user) => ({ label: user, value: user }))}
+						// label={userOwnership.map((user) => ({ label: user, value: user }))}
+						value={userOwnership.map((user) => {
+							// hitta användaren från lokal storage baserat på de användares id som finns registrerat som ägare:
+							const foundUser = usersFromLocalStorage.find((userFromLS) => userFromLS.id === user);
+
+							return {
+								// om det finns en funnen användare så tar vi namnet som label annars okänd användare.
+								label: foundUser ? foundUser.name : "Okänd Användare",
+								value: user
+							};
+						})}
 						onChange={handleUserOwnershipChange}
 						styles={{
 							option: (provided) => ({
